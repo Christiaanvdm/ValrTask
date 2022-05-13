@@ -1,11 +1,8 @@
 import java.util.Date
 import java.util.UUID
+import kotlin.emptyArray
 
-interface IOrderBook {
-    var orders: Array<Order>,
-}
-
-class OrderBook(override var orders: Array<Order>): IOrderBook
+class OrderBook(var orders: Array<Order> = emptyArray<Order>())
 
 class Order(
     val id: UUID,
