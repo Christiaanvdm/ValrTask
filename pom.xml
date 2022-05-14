@@ -18,7 +18,7 @@
     <vertx.version>4.3.0</vertx.version>
     <junit-jupiter.version>5.7.0</junit-jupiter.version>
 
-    <main.verticle>vandermerwejc.valr1.starter.MainVerticle</main.verticle>
+    <main.verticle>verticles.MainVerticle</main.verticle>
     <launcher.class>io.vertx.core.Launcher</launcher.class>
   </properties>
 
@@ -37,7 +37,8 @@
   <dependencies>
     <dependency>
       <groupId>io.vertx</groupId>
-      <artifactId>vertx-web-client</artifactId>
+      <artifactId>vertx-web</artifactId>
+      <version>4.3.0</version>
     </dependency>
     <dependency>
       <groupId>io.vertx</groupId>
@@ -64,6 +65,12 @@
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-junit5</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.mockk</groupId>
+      <artifactId>mockk</artifactId>
+      <version>1.9.3</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -171,7 +178,7 @@
             <path>
               <groupId>io.micronaut</groupId>
               <artifactId>micronaut-inject-java</artifactId>
-              <version>${micronaut.version}</version>
+              <version>3.4.3</version>
             </path>
           </annotationProcessorPaths>
         </configuration>
