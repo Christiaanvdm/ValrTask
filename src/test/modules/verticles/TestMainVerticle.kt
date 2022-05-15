@@ -1,5 +1,7 @@
 package modules.verticles
 
+import com.google.inject.Guice
+import com.google.inject.Injector
 import io.mockk.*
 import io.vertx.core.Vertx
 import io.vertx.ext.web.Router
@@ -10,12 +12,12 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-
 import verticles.MainVerticle
+import com.google.inject.Module
 
 @ExtendWith(VertxExtension::class)
 class TestMainVerticle {
-  private val _routerCompilationServiceMock = mockk<IRouterService>()
+  private val _routerServiceMock = mockk<IRouterService>()
   private var _routerObject: Router? = null
 
   @BeforeEach
@@ -24,16 +26,22 @@ class TestMainVerticle {
     mockkStatic(Router::class)
     every { Router.router(any()) } returns _routerObject
 
-    every { _routerCompilationServiceMock.compileRouter(any()) } returns Router.router(vertx)
-    vertx.deployVerticle(MainVerticle(_routerCompilationServiceMock), testContext.succeeding<String> { _ -> testContext.completeNow() })
+    val injectMock = mockk<Injector>()
+    every { injectMock.getInstance(IRouterService::class.java) } returns _routerServiceMock
+
+    mockkStatic((Guice::class))
+    every { Guice.createInjector(any<Module>()) } returns injectMock
+
+    every { _routerServiceMock.compileRouter(any()) } returns Router.router(vertx)
+    vertx.deployVerticle(MainVerticle(), testContext.succeeding<String> { _ -> testContext.completeNow() })
   }
 
   @Test
   fun verticle_deployed(vertx: Vertx, testContext: VertxTestContext) {
     testContext.completeNow()
 
-    verify { _routerCompilationServiceMock.compileRouter(_routerObject!!) }
-    confirmVerified(_routerCompilationServiceMock)
+    verify { _routerServiceMock.compileRouter(_routerObject!!) }
+    confirmVerified(_routerServiceMock)
   }
 
   @AfterEach
