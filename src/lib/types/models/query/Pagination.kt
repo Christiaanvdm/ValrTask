@@ -1,3 +1,5 @@
+package types.models.query
+
 import kotlinx.serialization.Serializable
 
 @Serializable

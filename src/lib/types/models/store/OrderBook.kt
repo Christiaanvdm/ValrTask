@@ -1,6 +1,9 @@
+package types.models.store
+
+import CurrencyPair
+import OrderSide
 import java.util.Date
 import java.util.UUID
-import kotlin.emptyArray
 
 data class OrderBook(var orders: Array<Order> = emptyArray<Order>())
 

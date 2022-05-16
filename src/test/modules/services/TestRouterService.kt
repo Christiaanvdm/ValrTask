@@ -14,6 +14,8 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import types.constants.Configuration
 import types.exceptions.UserOutputParseException
+import types.models.response.OrderBookResult
+import types.models.response.OrderResult
 import java.io.InvalidObjectException
 import java.util.*
 

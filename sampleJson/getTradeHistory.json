@@ -1,0 +1,1002 @@
+[
+  {
+    "price": "493338",
+    "quantity": "0.00002128",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:33:19.513Z",
+    "takerSide": "sell",
+    "sequenceId": 7648404,
+    "id": "efe11f06-e5ee-4f6d-8c85-8eecdac4ce49",
+    "quoteVolume": "10.49823264"
+  },
+  {
+    "price": "493345",
+    "quantity": "0.00002128",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:33:14.450Z",
+    "takerSide": "sell",
+    "sequenceId": 7648403,
+    "id": "c994bc2e-fd7c-4427-8535-59cb90695ded",
+    "quoteVolume": "10.4983816"
+  },
+  {
+    "price": "493339",
+    "quantity": "0.03227937",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:33:12.476Z",
+    "takerSide": "sell",
+    "sequenceId": 7648402,
+    "id": "261677a9-ca79-4545-b835-133e24f67028",
+    "quoteVolume": "15924.67211643"
+  },
+  {
+    "price": "493542",
+    "quantity": "0.01772063",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:33:12.476Z",
+    "takerSide": "sell",
+    "sequenceId": 7648401,
+    "id": "42c24b52-2757-4b51-b695-db17603d3a82",
+    "quoteVolume": "8745.87517146"
+  },
+  {
+    "price": "493542",
+    "quantity": "0.01228937",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:33:12.170Z",
+    "takerSide": "sell",
+    "sequenceId": 7648400,
+    "id": "ec770cc1-d5f8-4a41-811d-79845d758de7",
+    "quoteVolume": "6065.32024854"
+  },
+  {
+    "price": "493542",
+    "quantity": "0.00002128",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:33:08.060Z",
+    "takerSide": "sell",
+    "sequenceId": 7648399,
+    "id": "156b68f3-c3de-4db2-b706-056d3395917a",
+    "quoteVolume": "10.50257376"
+  },
+  {
+    "price": "493542",
+    "quantity": "0.00002128",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:33:03.038Z",
+    "takerSide": "sell",
+    "sequenceId": 7648397,
+    "id": "dbbae6cb-0fcf-4f3c-a7eb-11c5fc4eb7e1",
+    "quoteVolume": "10.50257376"
+  },
+  {
+    "price": "493346",
+    "quantity": "0.00002128",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:58.001Z",
+    "takerSide": "sell",
+    "sequenceId": 7648387,
+    "id": "d2a33e78-752e-4021-a1cc-79315195f228",
+    "quoteVolume": "10.49840288"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.20622088135",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:57.806Z",
+    "takerSide": "sell",
+    "sequenceId": 7648386,
+    "id": "234d88b2-5d6b-48e3-b442-0d3c5efb9fd7",
+    "quoteVolume": "102084.07934852105"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00336",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:57.803Z",
+    "takerSide": "sell",
+    "sequenceId": 7648385,
+    "id": "c13980e5-5e3a-4699-9132-f9f34f17f4e1",
+    "quoteVolume": "1663.27728"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.0060422",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:55.363Z",
+    "takerSide": "sell",
+    "sequenceId": 7648382,
+    "id": "e033f91b-4352-4aeb-b69b-fa92f83acf3a",
+    "quoteVolume": "2991.0279706"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:54.761Z",
+    "takerSide": "sell",
+    "sequenceId": 7648381,
+    "id": "95aea91f-a7a1-4d8d-ba3e-0da23eba663b",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.15919",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:54.666Z",
+    "takerSide": "sell",
+    "sequenceId": 7648380,
+    "id": "811a76f7-7ac8-4e46-8a7a-f6cf438bf562",
+    "quoteVolume": "78802.71137"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.04146",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:54.649Z",
+    "takerSide": "sell",
+    "sequenceId": 7648379,
+    "id": "dd9320d3-31b6-4f3b-adb3-8ce1eb91a835",
+    "quoteVolume": "20523.65358"
+  },
+  {
+    "price": "495023",
+    "quantity": "1",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:54.569Z",
+    "takerSide": "sell",
+    "sequenceId": 7648378,
+    "id": "096117f8-82b0-43f8-a071-c973b0d5cb31",
+    "quoteVolume": "495023"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.1",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:54.382Z",
+    "takerSide": "sell",
+    "sequenceId": 7648375,
+    "id": "b29c61e5-2802-45ab-a898-79496f786f39",
+    "quoteVolume": "49502.3"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.01995246",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:54.375Z",
+    "takerSide": "sell",
+    "sequenceId": 7648373,
+    "id": "78b38442-823b-4afb-9d99-e2987641539b",
+    "quoteVolume": "9876.92660658"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00342",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:54.196Z",
+    "takerSide": "sell",
+    "sequenceId": 7648372,
+    "id": "4bba04d6-583e-47da-8a98-b044af869669",
+    "quoteVolume": "1692.97866"
+  },
+  {
+    "price": "495023",
+    "quantity": "1",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:54.193Z",
+    "takerSide": "sell",
+    "sequenceId": 7648371,
+    "id": "67097943-811c-4bec-a0fd-6c38919632e4",
+    "quoteVolume": "495023"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.01995225",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:54.152Z",
+    "takerSide": "sell",
+    "sequenceId": 7648369,
+    "id": "d0c00d6a-15c0-4290-96f6-33115aca8823",
+    "quoteVolume": "9876.82265175"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.1",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:54.072Z",
+    "takerSide": "sell",
+    "sequenceId": 7648368,
+    "id": "077b5a8f-a58f-4324-a9ec-62a8818d0a37",
+    "quoteVolume": "49502.3"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.01995173",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:53.906Z",
+    "takerSide": "sell",
+    "sequenceId": 7648367,
+    "id": "fa1b9ee0-d15d-499f-9314-13756de73bfd",
+    "quoteVolume": "9876.56523979"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.01995126",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:53.701Z",
+    "takerSide": "sell",
+    "sequenceId": 7648364,
+    "id": "ca65eebb-745d-4063-b2ca-94cff4afda62",
+    "quoteVolume": "9876.33257898"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:53.616Z",
+    "takerSide": "sell",
+    "sequenceId": 7648363,
+    "id": "41bb5473-aae9-4b7d-bd2d-e04c8cb609b9",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00003694",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:53.601Z",
+    "takerSide": "sell",
+    "sequenceId": 7648362,
+    "id": "d2ae23d1-3fad-4ad1-92b4-eeac5c052368",
+    "quoteVolume": "18.28614962"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00003694",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:53.525Z",
+    "takerSide": "sell",
+    "sequenceId": 7648357,
+    "id": "10a2c0c3-fa96-4385-8ba6-cfb67debb46f",
+    "quoteVolume": "18.28614962"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:53.432Z",
+    "takerSide": "sell",
+    "sequenceId": 7648356,
+    "id": "d8a6a5c1-05dc-42b1-bd64-9093167d83ae",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.1",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:53.216Z",
+    "takerSide": "sell",
+    "sequenceId": 7648355,
+    "id": "0550954f-09f1-4ce2-beaa-051be1e1d05d",
+    "quoteVolume": "49502.3"
+  },
+  {
+    "price": "495023",
+    "quantity": "1",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:53.121Z",
+    "takerSide": "sell",
+    "sequenceId": 7648354,
+    "id": "1305e284-ff33-434a-9cf5-0171eb733e18",
+    "quoteVolume": "495023"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.04632",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:53.120Z",
+    "takerSide": "sell",
+    "sequenceId": 7648353,
+    "id": "f14253ac-100b-4328-b3b9-3f8f21304239",
+    "quoteVolume": "22929.46536"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.02209",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:52.957Z",
+    "takerSide": "sell",
+    "sequenceId": 7648352,
+    "id": "16fee68d-ce39-4856-bc7e-7a1b707a50f2",
+    "quoteVolume": "10935.05807"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.04668",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:52.856Z",
+    "takerSide": "sell",
+    "sequenceId": 7648351,
+    "id": "464cd28d-68c4-49ae-99ce-bcee6dc59438",
+    "quoteVolume": "23107.67364"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.1",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:52.856Z",
+    "takerSide": "sell",
+    "sequenceId": 7648350,
+    "id": "436888ce-123b-4c49-a6d4-da7c8a6a6974",
+    "quoteVolume": "49502.3"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.02518",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:52.801Z",
+    "takerSide": "sell",
+    "sequenceId": 7648349,
+    "id": "1aa61f5a-b0db-4778-bc4c-61e797d400c7",
+    "quoteVolume": "12464.67914"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:51.938Z",
+    "takerSide": "sell",
+    "sequenceId": 7648348,
+    "id": "aa9bccfb-7b92-412b-8558-7550c86658a4",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.01995173",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:51.844Z",
+    "takerSide": "sell",
+    "sequenceId": 7648347,
+    "id": "a1059d11-54c9-4887-a727-560ae2944a16",
+    "quoteVolume": "9876.56523979"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.01995173",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:51.607Z",
+    "takerSide": "sell",
+    "sequenceId": 7648343,
+    "id": "78d9d0a0-20eb-46e6-a9c5-01a3ba5d0063",
+    "quoteVolume": "9876.56523979"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00013491",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:51.483Z",
+    "takerSide": "sell",
+    "sequenceId": 7648342,
+    "id": "b0c90a00-1ada-418b-b73a-28acbdbea35b",
+    "quoteVolume": "66.78355293"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:48.613Z",
+    "takerSide": "sell",
+    "sequenceId": 7648339,
+    "id": "d97507f8-fcd1-4a59-88c9-17214dceb3da",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:48.312Z",
+    "takerSide": "sell",
+    "sequenceId": 7648338,
+    "id": "d7f2be53-a386-4b47-b2d9-8a29b3594b20",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:46.408Z",
+    "takerSide": "sell",
+    "sequenceId": 7648337,
+    "id": "ba6312c3-2cf8-4711-b1d1-c75d24a163e5",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.01995153",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:45.005Z",
+    "takerSide": "sell",
+    "sequenceId": 7648336,
+    "id": "b0fd6395-8835-4556-837e-66cf9bc4298e",
+    "quoteVolume": "9876.46623519"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.01995153",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:44.800Z",
+    "takerSide": "sell",
+    "sequenceId": 7648333,
+    "id": "51d1cb3a-fe70-48dc-8ca0-f75367a9edcd",
+    "quoteVolume": "9876.46623519"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00603802",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:44.756Z",
+    "takerSide": "sell",
+    "sequenceId": 7648332,
+    "id": "f546e0d6-d3e2-4620-96d1-e9c88270834f",
+    "quoteVolume": "2988.95877446"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.01995153",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:44.452Z",
+    "takerSide": "sell",
+    "sequenceId": 7648330,
+    "id": "55fead13-fa77-4c69-9186-aefabb923ca3",
+    "quoteVolume": "9876.46623519"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:44.370Z",
+    "takerSide": "sell",
+    "sequenceId": 7648329,
+    "id": "6c21fc89-7fd3-4b11-828a-651a5428e5c4",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.01995153",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:44.264Z",
+    "takerSide": "sell",
+    "sequenceId": 7648327,
+    "id": "e2703d45-574c-4cdf-944b-5bbdad739aa2",
+    "quoteVolume": "9876.46623519"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.001",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:43.633Z",
+    "takerSide": "sell",
+    "sequenceId": 7648325,
+    "id": "d8db7817-5dcf-4977-8a32-ec796e0f1753",
+    "quoteVolume": "495.023"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00603715",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:43.494Z",
+    "takerSide": "sell",
+    "sequenceId": 7648324,
+    "id": "d2042c5e-08c0-4f55-b7d9-b4c0c64f5c3c",
+    "quoteVolume": "2988.52810445"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:43.456Z",
+    "takerSide": "sell",
+    "sequenceId": 7648323,
+    "id": "c6e19efb-853c-4265-9322-1a3c7a7fb0e8",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495024",
+    "quantity": "0.0208868",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:43.370Z",
+    "takerSide": "buy",
+    "sequenceId": 7648322,
+    "id": "88f59218-6843-4b49-ac03-7dea13dc8680",
+    "quoteVolume": "10339.4672832"
+  },
+  {
+    "price": "495024",
+    "quantity": "0.55",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:43.370Z",
+    "takerSide": "buy",
+    "sequenceId": 7648321,
+    "id": "b07f2c6b-4994-4eae-80a1-3bd187f201b2",
+    "quoteVolume": "272263.2"
+  },
+  {
+    "price": "495024",
+    "quantity": "0.3291132",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:43.370Z",
+    "takerSide": "buy",
+    "sequenceId": 7648320,
+    "id": "b0afe3e4-01e8-454d-8fcd-cc01b18e28e9",
+    "quoteVolume": "162918.9327168"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:43.287Z",
+    "takerSide": "sell",
+    "sequenceId": 7648319,
+    "id": "39e9391b-08b5-490f-991a-c10cc0abfdbe",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.001",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:42.936Z",
+    "takerSide": "sell",
+    "sequenceId": 7648318,
+    "id": "8648987a-a81b-4218-a3bf-3524e22bd90d",
+    "quoteVolume": "495.023"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:42.290Z",
+    "takerSide": "sell",
+    "sequenceId": 7648315,
+    "id": "8ad74bd9-694e-4dbe-a7ac-5ee183b180ba",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:40.164Z",
+    "takerSide": "sell",
+    "sequenceId": 7648314,
+    "id": "b206343e-a06d-4dea-b9b5-aac1d684030a",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00024241",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:39.448Z",
+    "takerSide": "sell",
+    "sequenceId": 7648313,
+    "id": "dda47ff8-67a0-4882-ab14-060188fced39",
+    "quoteVolume": "119.99852543"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.001",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:38.657Z",
+    "takerSide": "sell",
+    "sequenceId": 7648312,
+    "id": "4808ff86-ede4-47d0-81ad-6731549fff71",
+    "quoteVolume": "495.023"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:38.456Z",
+    "takerSide": "sell",
+    "sequenceId": 7648311,
+    "id": "514144c4-b6f7-418b-9a8b-c9aab150ec26",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:38.456Z",
+    "takerSide": "sell",
+    "sequenceId": 7648310,
+    "id": "40082fce-a1be-4dca-9b77-161e37a14540",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:38.161Z",
+    "takerSide": "sell",
+    "sequenceId": 7648309,
+    "id": "9ef6f679-3986-4747-8e4d-aa31eea28286",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.001",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:37.800Z",
+    "takerSide": "sell",
+    "sequenceId": 7648308,
+    "id": "a3f5d851-966c-420e-a440-c80c726d4695",
+    "quoteVolume": "495.023"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:36.122Z",
+    "takerSide": "sell",
+    "sequenceId": 7648307,
+    "id": "045c0333-6efa-4e5e-b172-8698bfbdd686",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:33.928Z",
+    "takerSide": "sell",
+    "sequenceId": 7648306,
+    "id": "95dc6520-629f-43f1-ba7e-4ecbb55e3ecd",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:33.356Z",
+    "takerSide": "sell",
+    "sequenceId": 7648305,
+    "id": "6a7dab04-1480-41d0-a83f-dfda1c30a446",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:33.352Z",
+    "takerSide": "sell",
+    "sequenceId": 7648304,
+    "id": "747dc18a-e498-4970-9169-aa81545be228",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:31.837Z",
+    "takerSide": "sell",
+    "sequenceId": 7648303,
+    "id": "69f6961a-d12c-46bd-ae4e-13fffd50dca1",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:29.789Z",
+    "takerSide": "sell",
+    "sequenceId": 7648302,
+    "id": "e9ab1148-c357-46e3-a2bd-f0295a51960f",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.001",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:28.544Z",
+    "takerSide": "sell",
+    "sequenceId": 7648301,
+    "id": "bb85f181-73dc-41a6-940e-0edad7529d62",
+    "quoteVolume": "495.023"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:28.305Z",
+    "takerSide": "sell",
+    "sequenceId": 7648300,
+    "id": "ae531bf4-8c85-45be-8753-63b560afcfcd",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:28.305Z",
+    "takerSide": "sell",
+    "sequenceId": 7648299,
+    "id": "b1867842-368e-42b8-a4a2-d7452cdf36da",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:27.766Z",
+    "takerSide": "sell",
+    "sequenceId": 7648298,
+    "id": "96bb93b3-e960-40d7-85ef-818f92b5053e",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:25.779Z",
+    "takerSide": "sell",
+    "sequenceId": 7648297,
+    "id": "60561243-f65d-45d7-b18d-7ce8d6149e90",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00184949865",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:24.366Z",
+    "takerSide": "sell",
+    "sequenceId": 7648296,
+    "id": "ae7d6a9a-6c78-4dee-a36e-691efc638beb",
+    "quoteVolume": "915.54437021895"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00545429",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:23.595Z",
+    "takerSide": "sell",
+    "sequenceId": 7648295,
+    "id": "4cafd746-8bf9-475a-a578-97ab7a4c9922",
+    "quoteVolume": "2699.99899867"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:23.585Z",
+    "takerSide": "sell",
+    "sequenceId": 7648294,
+    "id": "f4ad68f4-b127-4dd9-91aa-a4e3396f8f5b",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:23.258Z",
+    "takerSide": "sell",
+    "sequenceId": 7648293,
+    "id": "a86ee83f-bc84-4244-ba2c-a43aedbf53dc",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:23.258Z",
+    "takerSide": "sell",
+    "sequenceId": 7648292,
+    "id": "d6fd6dd7-0c64-4614-ab57-76218f53bc87",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:21.518Z",
+    "takerSide": "sell",
+    "sequenceId": 7648291,
+    "id": "4cd99898-dbe5-4e05-8dad-99b5d8819458",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00997672",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:21.050Z",
+    "takerSide": "sell",
+    "sequenceId": 7648290,
+    "id": "07302362-14d7-4991-80b3-94b84ddc8b15",
+    "quoteVolume": "4938.70586456"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.021919",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:20.295Z",
+    "takerSide": "sell",
+    "sequenceId": 7648289,
+    "id": "9de6548b-01d9-4af7-8b65-492b0495b257",
+    "quoteVolume": "10850.409137"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:19.478Z",
+    "takerSide": "sell",
+    "sequenceId": 7648288,
+    "id": "c4b10c80-2b38-46d7-bdf3-944896927242",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:18.198Z",
+    "takerSide": "sell",
+    "sequenceId": 7648287,
+    "id": "077bd963-4c4f-465b-8926-1659f3cdb8a3",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:18.198Z",
+    "takerSide": "sell",
+    "sequenceId": 7648286,
+    "id": "130ac1d8-2ba7-42ae-8597-9fbfd2565c20",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:17.421Z",
+    "takerSide": "sell",
+    "sequenceId": 7648285,
+    "id": "a75772f3-c4a6-4ef4-8e2a-52570e259d7c",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495024",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:13.150Z",
+    "takerSide": "sell",
+    "sequenceId": 7648284,
+    "id": "7801b70d-62c8-4d20-9de6-be8218205c2d",
+    "quoteVolume": "10.49945904"
+  },
+  {
+    "price": "495024",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:13.140Z",
+    "takerSide": "sell",
+    "sequenceId": 7648283,
+    "id": "b2a6117e-b0a6-4624-b6d7-c482552a384d",
+    "quoteVolume": "10.49945904"
+  },
+  {
+    "price": "495024",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:08.143Z",
+    "takerSide": "sell",
+    "sequenceId": 7648282,
+    "id": "8979066a-a225-4635-a731-4f23f22c9437",
+    "quoteVolume": "10.49945904"
+  },
+  {
+    "price": "495024",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:08.141Z",
+    "takerSide": "sell",
+    "sequenceId": 7648281,
+    "id": "6a67429c-58f7-43af-b2e2-faa247b65e3b",
+    "quoteVolume": "10.49945904"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:04.140Z",
+    "takerSide": "sell",
+    "sequenceId": 7648280,
+    "id": "e62e277f-e838-45a5-839e-f4b0fc8e817f",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:32:01.997Z",
+    "takerSide": "sell",
+    "sequenceId": 7648279,
+    "id": "d98fe217-2138-466f-b2ca-2ea9f353f97c",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:31:59.764Z",
+    "takerSide": "sell",
+    "sequenceId": 7648278,
+    "id": "68ac750e-e939-4b65-88f1-437dd5666f22",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:31:57.775Z",
+    "takerSide": "sell",
+    "sequenceId": 7648277,
+    "id": "ade20eda-f000-4113-83c8-9724a6b459f9",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.05",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:31:55.745Z",
+    "takerSide": "sell",
+    "sequenceId": 7648275,
+    "id": "06c4adc7-2ae9-4737-9b17-56961332fc53",
+    "quoteVolume": "24751.15"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.25068405",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:31:54.604Z",
+    "takerSide": "buy",
+    "sequenceId": 7648273,
+    "id": "5f638985-fd98-4584-b364-bba345d33b94",
+    "quoteVolume": "124094.37048315"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.00002121",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:31:54.604Z",
+    "takerSide": "buy",
+    "sequenceId": 7648272,
+    "id": "f103ca73-e283-4ecb-8850-4fa0a980c8a6",
+    "quoteVolume": "10.49943783"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.55",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:31:54.604Z",
+    "takerSide": "buy",
+    "sequenceId": 7648271,
+    "id": "595e3d23-cd44-4d4d-a65b-39aa853571a4",
+    "quoteVolume": "272262.65"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.0194528",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:31:54.604Z",
+    "takerSide": "buy",
+    "sequenceId": 7648270,
+    "id": "d732b9e7-c9ff-4f25-abdb-ac346a371de5",
+    "quoteVolume": "9629.5834144"
+  },
+  {
+    "price": "495023",
+    "quantity": "0.04927044",
+    "currencyPair": "BTCZAR",
+    "tradedAt": "2022-05-16T13:31:54.604Z",
+    "takerSide": "buy",
+    "sequenceId": 7648269,
+    "id": "9131da04-9146-4f8b-9cad-a50dbf3e1098",
+    "quoteVolume": "24390.00102012"
+  }
+]

@@ -18,7 +18,7 @@
     <vertx.version>4.3.0</vertx.version>
     <junit-jupiter.version>5.7.0</junit-jupiter.version>
 
-    <main.verticle>verticles.MainVerticle</main.verticle>
+    <main.verticle>startup.MainVerticle</main.verticle>
     <launcher.class>io.vertx.core.Launcher</launcher.class>
   </properties>
 

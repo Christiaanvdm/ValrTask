@@ -1,7 +1,9 @@
 package controllers
 
 import CurrencyPair
-import OrderBookResult
+import com.google.inject.Inject
+import modules.providers.IOrderBookProvider
+import types.models.response.OrderBookResult
 import javax.inject.Singleton
 
 interface IOrderBookController {
@@ -9,7 +11,7 @@ interface IOrderBookController {
 }
 
 @Singleton
-class OrderBookController: IOrderBookController {
+class OrderBookController @Inject constructor(private val provider: IOrderBookProvider) : IOrderBookController {
   override fun getOrderBook(currencyPair: CurrencyPair): OrderBookResult {
     throw NotImplementedError()
   }

@@ -1,3 +1,7 @@
+package types.models.response
+
+import CurrencyPair
+import OrderSide
 import kotlinx.serialization.Serializable
 
 @Serializable

@@ -1,15 +1,11 @@
-package verticles
+package startup
 
 import com.google.inject.Guice
 import com.google.inject.Injector
-import com.google.inject.AbstractModule
-import controllers.IOrderBookController
-import controllers.OrderBookController
 import io.vertx.core.http.HttpServer
 import io.vertx.ext.web.Router
 import io.vertx.kotlin.coroutines.CoroutineVerticle
 import modules.services.IRouterService
-import modules.services.RouterService
 
 class MainVerticle : CoroutineVerticle() {
   private fun createServer(router: Router): HttpServer {
@@ -23,7 +19,7 @@ class MainVerticle : CoroutineVerticle() {
   }
 
   override suspend fun start() {
-    val injector: Injector = Guice.createInjector(MainGuiceModule())
+    val injector: Injector = Guice.createInjector(InjectionMappingModule())
     val routerService = injector.getInstance(IRouterService::class.java)
     val routerBuilderFuture = routerService.createRouterBuilder(vertx)
 
@@ -36,9 +32,3 @@ class MainVerticle : CoroutineVerticle() {
   }
 }
 
-class MainGuiceModule : AbstractModule() {
-  override fun configure() {
-    bind(IRouterService::class.java).to(RouterService::class.java)
-    bind(IOrderBookController::class.java).to(OrderBookController::class.java)
-  }
-}
