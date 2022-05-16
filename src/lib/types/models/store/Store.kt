@@ -7,6 +7,4 @@ interface IStore {
 }
 
 @Singleton
-class Store(orderBook: OrderBook = OrderBook()): IStore {
-  override val orderBook: OrderBook = orderBook
-}
+class Store(override val orderBook: OrderBook = OrderBook()): IStore

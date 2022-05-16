@@ -81,4 +81,22 @@ class TestOrderBookProvider {
     verify { _storeServiceMock.getOrderIndex(_asks[1]) }
     confirmVerified(_storeServiceMock)
   }
+
+  @Test
+  fun getLastIndexAndDate_LastDateIsBid_ReturnsExpectedResults() {
+    val dataMock = mockk<IOrderAsksBids>()
+    val asks = _orders.toList()
+    val bids = _orders.toList().map{ ask -> ask.copy(side = OrderSide.buy, date = Date(System.currentTimeMillis() + 100))}
+    every { dataMock.asks } returns asks
+    every { dataMock.bids } returns bids
+    every { _storeServiceMock.getOrderIndex(bids[1]) } returns 4
+
+    // ACT
+    val (index, date) = _exposed.getLastIndexAndDateExposed(dataMock)
+
+    assert(date == bids[1].date)
+    assert(index == 4)
+    verify { _storeServiceMock.getOrderIndex(bids[1]) }
+    confirmVerified(_storeServiceMock)
+  }
 }

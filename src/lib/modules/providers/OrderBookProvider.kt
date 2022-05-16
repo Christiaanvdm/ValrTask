@@ -20,8 +20,8 @@ open class OrderBookProvider @Inject constructor(private val _storeService: ISto
     OrderResult(order.side, order.pair, order.price, roundToDigits(order.quantity, Configuration.FloatDigitsOutputCount), order.count)
 
   protected fun getLastIndexAndDate(data: IOrderAsksBids): Pair<Int, Date> {
-    val lastAsk = data.asks.last()
-    val lastBid = data.bids.last()
+    val lastAsk = data.asks.first()
+    val lastBid = data.bids.first()
 
     val askDateLatest = lastAsk.date >= lastBid.date
     val lastIndex = if (askDateLatest) _storeService.getOrderIndex(lastAsk) else _storeService.getOrderIndex(lastBid)
