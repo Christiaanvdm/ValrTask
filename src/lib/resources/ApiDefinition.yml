@@ -1,0 +1,90 @@
+openapi: 3.0.0
+servers:
+  - url: 'http://localhost/'
+info:
+  description: >-
+    This API allows for basic order book functionality
+  version: 1.0.0
+  title: Valr Acceptance Task
+tags:
+  - name: OrderBook
+    description: Retrieve or place OrderBook orders
+paths:
+  /{currencyPair}/orderbook:
+    get:
+      tags:
+        - OrderBook
+      summary: Get the latest OrderBook history
+      description: ''
+      operationId: getOrderBook
+      parameters:
+        - name: currencyPair
+          in: path
+          description: Status values that need to be considered for filter
+          required: true
+          schema:
+            $ref: '#/components/schemas/CurrencyPair'
+
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderBook'
+        '405':
+          description: Invalid input
+components:
+  schemas:
+    CurrencyPair:
+      title: CurrencyPair
+      description: Available currency pairs
+      type: string
+      enum:
+        - BTCZAR
+        - ETHZAR
+        - XRPZAR
+    BuySell:
+      title: Buy/Sell
+      description: Specifies if the order was a buy/sell order
+      type: string
+      enum:
+        - Buy
+        - Sell
+    OrderBook:
+      title: OrderBook
+      description: Latest Asks, Bids and DateTime updated
+      type: object
+      properties:
+        asks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        bids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        lastChange:
+          type: string
+          format: date-time
+        sequenceNumber:
+          type: integer
+          format: int64
+    Order:
+      title: Order
+      description: A single Order
+      type: object
+      properties:
+        side:
+          $ref: '#/components/schemas/BuySell'
+        pair:
+          $ref: '#/components/schemas/CurrencyPair'
+        price:
+          type: number
+          format: float
+        quantity:
+          type: integer
+          format: int64
+        count:
+          type: integer
+          format: int32

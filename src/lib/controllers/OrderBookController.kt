@@ -1,16 +1,17 @@
 package controllers
 
-import io.vertx.ext.web.RoutingContext
+import CurrencyPair
+import OrderBookResult
 import javax.inject.Singleton
 
 interface IOrderBookController {
-  fun getOrderBook(ctx: RoutingContext): Unit
+  fun getOrderBook(currencyPair: CurrencyPair): OrderBookResult
 }
 
 @Singleton
 class OrderBookController: IOrderBookController {
-  override fun getOrderBook(ctx: RoutingContext) {
-    ctx.response().end("Woohoo")
+  override fun getOrderBook(currencyPair: CurrencyPair): OrderBookResult {
+    throw NotImplementedError()
   }
 }
 

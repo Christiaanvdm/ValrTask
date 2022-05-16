@@ -1,8 +1,18 @@
-import java.util.Date
+import kotlinx.serialization.Serializable
 
-class OrderBookResult(
-  var lastChange: Date,
+@Serializable
+data class OrderBookResult(
+  var lastChangeDate: String,
   var sequenceNumber: Long,
-  var asks: Array<Order>,
-  var bids: Array<Order>,
+  var asks: Array<OrderResult>,
+  var bids: Array<OrderResult>,
+)
+
+@Serializable
+data class OrderResult(
+  val side: OrderSide,
+  val pair: CurrencyPair,
+  val price: Long,
+  val quantity: Double,
+  val count: Int,
 )

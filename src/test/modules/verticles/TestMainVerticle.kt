@@ -8,7 +8,6 @@ import io.vertx.ext.web.Router
 import io.vertx.junit5.VertxExtension
 import io.vertx.junit5.VertxTestContext
 import modules.services.IRouterService
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -16,7 +15,20 @@ import verticles.MainVerticle
 import com.google.inject.Module
 
 @ExtendWith(VertxExtension::class)
-class TestMainVerticle {
+class TestMainVerticleIntegrated {
+  @BeforeEach
+  fun deploy_verticle(vertx: Vertx, testContext: VertxTestContext) {
+    vertx.deployVerticle(MainVerticle(), testContext.succeeding{ testContext.completeNow() })
+  }
+
+  @Test
+  fun verticle_deployed(vertx: Vertx, testContext: VertxTestContext) {
+    testContext.completeNow()
+  }
+}
+
+@ExtendWith(VertxExtension::class)
+class TestMainVerticleUnit {
   private val _routerServiceMock = mockk<IRouterService>()
   private var _routerObject: Router? = null
 
@@ -29,23 +41,16 @@ class TestMainVerticle {
     val injectMock = mockk<Injector>()
     every { injectMock.getInstance(IRouterService::class.java) } returns _routerServiceMock
 
-    mockkStatic((Guice::class))
+    mockkStatic(Guice::class)
     every { Guice.createInjector(any<Module>()) } returns injectMock
 
-    every { _routerServiceMock.compileRouter(any()) } returns Router.router(vertx)
-    vertx.deployVerticle(MainVerticle(), testContext.succeeding<String> { _ -> testContext.completeNow() })
+    vertx.deployVerticle(MainVerticle(), testContext.succeeding { testContext.completeNow() })
   }
 
   @Test
-  fun verticle_deployed(vertx: Vertx, testContext: VertxTestContext) {
+  fun verticle_deployed_calls_createRouteBuilder(vertx: Vertx, testContext: VertxTestContext) {
     testContext.completeNow()
 
-    verify { _routerServiceMock.compileRouter(_routerObject!!) }
-    confirmVerified(_routerServiceMock)
-  }
-
-  @AfterEach
-  fun destroy() {
-    unmockkStatic(Router::class)
+    verify { _routerServiceMock.createRouterBuilder(vertx) }
   }
 }
