@@ -92,5 +92,6 @@ class TestStoreService {
     assert(asks.any { ask -> ask.id == orders[6].id })
     assert(bids.any { bid -> bid.id == orders[7].id })
   }
+
   //endregion
 }
