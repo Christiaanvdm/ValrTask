@@ -6,11 +6,11 @@ import types.models.store.IStore
 import types.models.store.Order
 
 interface IStoreService {
-  fun getLatestOrderAsksBids(count: Long, pair: CurrencyPair): Pair<List<Order>, List<Order>>
+  fun getLatestOrderAsksAndBids(count: Long, pair: CurrencyPair): Pair<List<Order>, List<Order>>
 }
 
 class StoreService @Inject constructor(private val store: IStore): IStoreService {
-  override fun getLatestOrderAsksBids(count: Long, pair: CurrencyPair): Pair<List<Order>, List<Order>> {
+  override fun getLatestOrderAsksAndBids(count: Long, pair: CurrencyPair): Pair<List<Order>, List<Order>> {
     TODO("Not yet implemented")
   }
 }

@@ -5,7 +5,7 @@ import OrderSide
 import java.util.Date
 import java.util.UUID
 
-data class OrderBook(var orders: Array<Order> = emptyArray<Order>())
+class OrderBook(val orders: ArrayList<Order> = ArrayList(0))
 
 data class Order(
     val id: UUID,
