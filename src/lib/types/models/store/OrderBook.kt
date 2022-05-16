@@ -16,3 +16,8 @@ data class Order(
     val count: Int,
     val date: Date,
 )
+
+interface IOrderAsksBids {
+  val asks: List<Order>
+  val bids: List<Order>
+}

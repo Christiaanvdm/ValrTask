@@ -7,11 +7,10 @@ import types.models.store.OrderBook
 import types.models.store.Store
 import java.util.UUID
 import java.util.Date
-import kotlin.collections.ArrayDeque
 
 
 class TestStoreService {
-  private val order = Order(
+  private val _order = Order(
     UUID.randomUUID(),
     OrderSide.buy,
     CurrencyPair.BTCZAR,
@@ -20,59 +19,62 @@ class TestStoreService {
     1,
     Date(System.currentTimeMillis()),
   )
-  private val orderBook = OrderBook(
+  private val _orderBook = OrderBook(
     arrayListOf(
-      order,
-      order.copy(
+      _order,
+      _order.copy(
         id = UUID.randomUUID(),
         date = Date(System.currentTimeMillis() + 100)
       ),
-      order.copy(
+      _order.copy(
         id = UUID.randomUUID(),
         date = Date(System.currentTimeMillis() + 200)
       ),
-      order.copy(
+      _order.copy(
         id = UUID.randomUUID(),
         side = OrderSide.sell, date = Date(System.currentTimeMillis() + 300)
       ),
-      order.copy(
+      _order.copy(
         id = UUID.randomUUID(),
         date = Date(System.currentTimeMillis() + 1000)
       ),
-      order.copy(
+      _order.copy(
         id = UUID.randomUUID(),
         side = OrderSide.sell, date = Date(System.currentTimeMillis() + 2000)
       ),
-      order.copy(
+      _order.copy(
         id = UUID.randomUUID(),
         side = OrderSide.sell,
         pair = CurrencyPair.ETHZAR,
         date = Date(System.currentTimeMillis() + 3000)
       ),
-      order.copy(
+      _order.copy(
         id = UUID.randomUUID(),
         pair = CurrencyPair.ETHZAR, date = Date(System.currentTimeMillis() + 4000)
       ),
-      order.copy(
+      _order.copy(
         id = UUID.randomUUID(),
         date = Date(System.currentTimeMillis() + 4500)
       ),
-      order.copy(
+      _order.copy(
         id = UUID.randomUUID(),
         side = OrderSide.sell, date = Date(System.currentTimeMillis() + 5000)
       ),
     )
   )
-  private val _store: IStore = Store(orderBook)
+  private val _store: IStore = Store(_orderBook)
   private val _storeService: IStoreService = StoreService(_store)
-  private val orders = orderBook.orders
+  private val orders = _orderBook.orders
 
   //region GetLatestOrderAsksAndBids
 
   @Test
   fun getLatestOrderAsksAndBids_fullResult_returnsExpectedCurrencyPairs() {
-    val (asks, bids) = _storeService.getLatestOrderAsksAndBids(3, CurrencyPair.BTCZAR)
+    // ACT
+    val result = _storeService.getLatestOrderAsksAndBids(3, CurrencyPair.BTCZAR)
 
+    val asks = result.asks
+    val bids = result.bids
     assert(asks.count() == 3)
     assert(bids.count() == 3)
 
@@ -84,8 +86,10 @@ class TestStoreService {
 
   @Test
   fun getLatestOrderAsksAndBids_notEnoughItems_returnsExpectedCurrencyPairs() {
-    val (asks, bids) = _storeService.getLatestOrderAsksAndBids(3, CurrencyPair.ETHZAR)
+    val result = _storeService.getLatestOrderAsksAndBids(3, CurrencyPair.ETHZAR)
 
+    val asks = result.asks
+    val bids = result.bids
     assert(asks.count() == 1)
     assert(bids.count() == 1)
 

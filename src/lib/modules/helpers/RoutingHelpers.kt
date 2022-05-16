@@ -15,4 +15,3 @@ inline fun <reified T : Enum<T>> getQueryParam(ctx: RoutingContext, paramName: S
     throw UserOutputParseException(ex.message)
   }
 }
-

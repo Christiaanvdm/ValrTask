@@ -92,7 +92,7 @@ class TestRouterService {
     val exposed = spyk(_exposed, recordPrivateCalls = true)
 
     val ctxMock = mockk<RoutingContext>()
-    val orderBookResult = OrderBookResult(Date().toString(), 10, emptyArray<OrderResult>(), emptyArray<OrderResult>())
+    val orderBookResult = OrderBookResult(Date().toString(), 10, emptyList<OrderResult>(), emptyList<OrderResult>())
 
     every { exposed["getCurrencyPair"](ctxMock) } returns CurrencyPair.BTCZAR
     every { _orderBookControllerMock.getOrderBook(any()) } returns orderBookResult

@@ -6,10 +6,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class OrderBookResult(
-  var lastChangeDate: String,
-  var sequenceNumber: Long,
-  var asks: Array<OrderResult>,
-  var bids: Array<OrderResult>,
+  val lastChangeDate: String,
+  val sequenceNumber: Long,
+  val asks: List<OrderResult>,
+  val bids: List<OrderResult>,
 )
 
 @Serializable
