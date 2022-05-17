@@ -162,7 +162,7 @@ components:
         quantity:
           type: number
           format: float
-          multipleOf: 0.000001
+          multipleOf: 0.00000001
           minimum: 0
         count:
           type: integer
@@ -178,6 +178,7 @@ components:
         quantity:
           type: number
           format: float
+          multipleOf: 0.000001
         pair:
           $ref: '#/components/schemas/CurrencyPair'
         postOnly:
