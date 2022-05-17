@@ -38,9 +38,12 @@ class DataService @Inject constructor(
     }
   }
 
-  override fun getTradeHistory(skip: Int, limit: Int, pair: ECurrencyPair): List<Trade> {
-    TODO("Not yet implemented")
-  }
+  override fun getTradeHistory(skip: Int, limit: Int, pair: ECurrencyPair): List<Trade> =
+    _store.tradeBook.rows
+      .reversed()
+      .filter { it.pair == pair }
+      .drop(skip)
+      .take(limit)
 
   override fun insertLimitOrder(order: LimitOrder): UUID {
     _store.limitOrderBook.rows.add(order)

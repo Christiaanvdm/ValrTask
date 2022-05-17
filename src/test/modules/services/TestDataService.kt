@@ -79,41 +79,50 @@ class TestDataService {
       _trade,
       _trade.copy(
         id = UUID.randomUUID(),
-        date = Date(System.currentTimeMillis() + 100)
+        date = Date(System.currentTimeMillis() + 100),
+        sequence = 2,
       ),
       _trade.copy(
         id = UUID.randomUUID(),
-        date = Date(System.currentTimeMillis() + 200)
+        date = Date(System.currentTimeMillis() + 200),
+        sequence = 3,
       ),
       _trade.copy(
         id = UUID.randomUUID(),
-        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 300)
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 300),
+        sequence = 4,
       ),
       _trade.copy(
         id = UUID.randomUUID(),
-        date = Date(System.currentTimeMillis() + 1000)
+        date = Date(System.currentTimeMillis() + 1000),
+        sequence = 5,
       ),
       _trade.copy(
         id = UUID.randomUUID(),
-        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 2000)
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 2000),
+        sequence = 6,
       ),
       _trade.copy(
         id = UUID.randomUUID(),
         side = EBuySell.SELL,
         pair = ECurrencyPair.ETHZAR,
-        date = Date(System.currentTimeMillis() + 3000)
+        date = Date(System.currentTimeMillis() + 3000),
+        sequence = 7,
       ),
       _trade.copy(
         id = UUID.randomUUID(),
-        pair = ECurrencyPair.ETHZAR, date = Date(System.currentTimeMillis() + 4000)
+        pair = ECurrencyPair.ETHZAR, date = Date(System.currentTimeMillis() + 4000),
+        sequence = 8,
       ),
       _trade.copy(
         id = UUID.randomUUID(),
-        date = Date(System.currentTimeMillis() + 4500)
+        date = Date(System.currentTimeMillis() + 4500),
+        sequence = 9,
       ),
       _trade.copy(
         id = UUID.randomUUID(),
-        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 5000)
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 5000),
+        sequence = 10,
       ),
     )
   )
@@ -161,10 +170,10 @@ class TestDataService {
 
   @Test
   fun getOrderHistory_fullResult_ReturnsExpected() {
-    val result = _dataService.getTradeHistory(1, 4, ECurrencyPair.BTCZAR)
+    val result = _dataService.getTradeHistory(2, 4, ECurrencyPair.BTCZAR)
 
     assert(result.count() == 4)
-    assert(result.containsAll(listOf(_trades[8], _trades[5], _trades[4], _trades[3])))
+    assert(result.containsAll(listOf(_trades[5], _trades[4], _trades[3], _trades[2])))
   }
 
   @Test
