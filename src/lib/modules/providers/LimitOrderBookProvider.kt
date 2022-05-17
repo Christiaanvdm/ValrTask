@@ -1,7 +1,7 @@
 package modules.providers
 
 import com.google.inject.Inject
-import modules.services.IStoreService
+import modules.services.IDataService
 import modules.services.NextIdService
 import types.models.query.LimitOrderRequest
 import types.models.response.LimitOrderResult
@@ -14,13 +14,13 @@ interface ILimitOrderBookProvider {
 }
 
 class LimitOrderBookProvider @Inject constructor(
-  private val storeService: IStoreService,
-  private val nextIdService: NextIdService,
+  private val _dataService: IDataService,
+  private val _nextIdService: NextIdService,
 ) : ILimitOrderBookProvider {
   override fun createLimitOrder(req: LimitOrderRequest): LimitOrderResult {
-    val nextId = nextIdService.getNextIdForBook(LimitOrderBook::class)
+    val nextId = _nextIdService.getNextIdForBook(LimitOrderBook::class)
 
-    val id = storeService.insertLimitOrder(
+    val id = _dataService.insertLimitOrder(
       LimitOrder(
         "0",
         req.postOnly,

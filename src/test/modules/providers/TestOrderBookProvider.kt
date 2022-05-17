@@ -1,7 +1,7 @@
 package modules.providers
 
 import io.mockk.*
-import modules.services.IStoreService
+import modules.services.IDataService
 import org.junit.jupiter.api.Test
 import types.constants.Configuration
 import types.constants.EBuySell
@@ -10,13 +10,13 @@ import types.models.store.IOrderAsksBids
 import types.models.store.Order
 import java.util.*
 
-class OrderBookProviderExposed(_storeServiceMock: IStoreService) : OrderBookProvider(_storeServiceMock) {
+class OrderBookProviderExposed(_dataServiceMock: IDataService) : OrderBookProvider(_dataServiceMock) {
   fun getLastSequenceAndDateExposed(data: IOrderAsksBids) = super.getLastSequenceAndDate(data)
 }
 
 class TestOrderBookProvider {
-  private val _storeServiceMock: IStoreService = mockk()
-  private val _exposed = OrderBookProviderExposed(_storeServiceMock)
+  private val _dataServiceMock: IDataService = mockk()
+  private val _exposed = OrderBookProviderExposed(_dataServiceMock)
   private val _orderBook: IOrderBookProvider = _exposed
 
   private val _order = Order(
@@ -59,7 +59,7 @@ class TestOrderBookProvider {
   @Test
   fun getOrderHistory_compilesDataAsExpected() {
     val asksBidsMock = createAsksBidsMock()
-    every { _storeServiceMock.getLatestOrderAsksAndBids(any(), any()) } returns asksBidsMock
+    every { _dataServiceMock.getLatestOrderAsksAndBids(any(), any()) } returns asksBidsMock
 
     val date = Date()
     val orderBook = spyk(_orderBook, recordPrivateCalls = true)
@@ -68,7 +68,7 @@ class TestOrderBookProvider {
     // ACT
     val result = orderBook.getOrderHistory(ECurrencyPair.BTCZAR)
 
-    verify { _storeServiceMock.getLatestOrderAsksAndBids(Configuration.GetOrderBookQueryAmount, ECurrencyPair.BTCZAR) }
+    verify { _dataServiceMock.getLatestOrderAsksAndBids(Configuration.GetOrderBookQueryAmount, ECurrencyPair.BTCZAR) }
     verify { orderBook["getLastSequenceAndDate"](asksBidsMock) }
     assert(result.lastChangeDate == date.toString())
     assert(result.sequenceNumber == 1.toLong())
@@ -84,7 +84,7 @@ class TestOrderBookProvider {
 
     assert(date == _asks[1].date)
     assert(sequence == 4)
-    confirmVerified(_storeServiceMock)
+    confirmVerified(_dataServiceMock)
   }
 
   @Test
@@ -107,6 +107,6 @@ class TestOrderBookProvider {
 
     assert(date == bids[1].date)
     assert(sequence == 4)
-    confirmVerified(_storeServiceMock)
+    confirmVerified(_dataServiceMock)
   }
 }

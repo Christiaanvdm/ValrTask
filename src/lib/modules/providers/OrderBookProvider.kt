@@ -2,7 +2,7 @@ package modules.providers
 
 import com.google.inject.Inject
 import modules.helpers.roundToDigits
-import modules.services.IStoreService
+import modules.services.IDataService
 import types.constants.Configuration
 import types.constants.ECurrencyPair
 import types.models.response.OrderBookResult
@@ -15,7 +15,7 @@ interface IOrderBookProvider {
   fun getOrderHistory(pair: ECurrencyPair): OrderBookResult
 }
 
-open class OrderBookProvider @Inject constructor(private val _storeService: IStoreService) : IOrderBookProvider {
+open class OrderBookProvider @Inject constructor(private val _dataService: IDataService) : IOrderBookProvider {
   private fun mapOrderToOrderResult(order: Order): OrderResult =
     OrderResult(order.side, order.pair, order.price, roundToDigits(order.quantity, Configuration.FloatDigitsOutputCount), order.count)
 
@@ -31,7 +31,7 @@ open class OrderBookProvider @Inject constructor(private val _storeService: ISto
   }
 
   override fun getOrderHistory(pair: ECurrencyPair): OrderBookResult {
-    val data = _storeService.getLatestOrderAsksAndBids(Configuration.GetOrderBookQueryAmount, pair)
+    val data = _dataService.getLatestOrderAsksAndBids(Configuration.GetOrderBookQueryAmount, pair)
     val (lastIndex, lastDate) = getLastSequenceAndDate(data)
 
     return OrderBookResult(

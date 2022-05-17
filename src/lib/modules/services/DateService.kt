@@ -3,21 +3,19 @@ package modules.services
 import com.google.inject.Inject
 import types.constants.EBuySell
 import types.constants.ECurrencyPair
-import types.models.store.IOrderAsksBids
-import types.models.store.IStore
-import types.models.store.LimitOrder
-import types.models.store.Order
+import types.models.store.*
 import java.util.*
 
-interface IStoreService {
-  fun getLatestOrderAsksAndBids(count: Long, pair: ECurrencyPair): IOrderAsksBids
+interface IDataService {
+  fun getLatestOrderAsksAndBids(count: Int, pair: ECurrencyPair): IOrderAsksBids
+  fun getTradeHistory(skip: Int, limit: Int, pair: ECurrencyPair): List<Trade>
   fun insertLimitOrder(order: LimitOrder): UUID
 }
 
-class StoreService @Inject constructor(
+class DataService @Inject constructor(
   private val _store: IStore,
-) : IStoreService {
-  override fun getLatestOrderAsksAndBids(count: Long, pair: ECurrencyPair): IOrderAsksBids {
+) : IDataService {
+  override fun getLatestOrderAsksAndBids(count: Int, pair: ECurrencyPair): IOrderAsksBids {
     val orders = _store.orderBook.rows.toMutableList()
     orders.sortBy { it.date }
 
@@ -38,6 +36,10 @@ class StoreService @Inject constructor(
       override val asks: List<Order> = asks
       override val bids: List<Order> = bids
     }
+  }
+
+  override fun getTradeHistory(skip: Int, limit: Int, pair: ECurrencyPair): List<Trade> {
+    TODO("Not yet implemented")
   }
 
   override fun insertLimitOrder(order: LimitOrder): UUID {

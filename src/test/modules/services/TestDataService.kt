@@ -10,7 +10,7 @@ import types.models.store.Store
 import java.util.*
 
 
-class TestStoreService {
+class TestDataService {
   private val _order = Order(
     1,
     UUID.randomUUID(),
@@ -67,7 +67,7 @@ class TestStoreService {
   )
 
   private val _store: IStore = Store(_orderBook)
-  private val _storeService: IStoreService = StoreService(_store)
+  private val _dataService: IDataService = DataService(_store)
   private val orders = _orderBook.rows
 
   //region GetLatestOrderAsksAndBids
@@ -75,7 +75,7 @@ class TestStoreService {
   @Test
   fun getLatestOrderAsksAndBids_fullResult_returnsExpectedCurrencyPairs() {
     // ACT
-    val result = _storeService.getLatestOrderAsksAndBids(3, ECurrencyPair.BTCZAR)
+    val result = _dataService.getLatestOrderAsksAndBids(3, ECurrencyPair.BTCZAR)
 
     val asks = result.asks
     val bids = result.bids
@@ -90,7 +90,7 @@ class TestStoreService {
 
   @Test
   fun getLatestOrderAsksAndBids_notEnoughItems_returnsExpectedCurrencyPairs() {
-    val result = _storeService.getLatestOrderAsksAndBids(3, ECurrencyPair.ETHZAR)
+    val result = _dataService.getLatestOrderAsksAndBids(3, ECurrencyPair.ETHZAR)
 
     val asks = result.asks
     val bids = result.bids

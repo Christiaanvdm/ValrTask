@@ -4,6 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Paginator(
-  val skip: Long = 0,
+  val skip: Int = 0,
   val limit: Int = 10
 )
