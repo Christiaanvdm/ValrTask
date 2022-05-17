@@ -19,17 +19,6 @@ class TestDataService {
     1
   )
 
-  private val _trade = Trade(
-    1.12345678,
-    UUID.randomUUID(),
-    1123,
-    1.1234,
-    ECurrencyPair.BTCZAR,
-    EBuySell.SELL,
-    Date(System.currentTimeMillis()),
-    1,
-  )
-
   private val _orderBook = OrderBook(
     arrayListOf(
       _order,
@@ -81,6 +70,17 @@ class TestDataService {
         sequence = 10,
       ),
     )
+  )
+
+  private val _trade = Trade(
+    1.12345678,
+    UUID.randomUUID(),
+    1123,
+    1.1234,
+    ECurrencyPair.BTCZAR,
+    EBuySell.SELL,
+    Date(System.currentTimeMillis()),
+    1,
   )
 
   private val _tradeBook = TradeBook(

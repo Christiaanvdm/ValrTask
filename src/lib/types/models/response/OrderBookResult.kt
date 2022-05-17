@@ -3,6 +3,7 @@ package types.models.response
 import kotlinx.serialization.Serializable
 import types.constants.EBuySell
 import types.constants.ECurrencyPair
+import types.serializers.ConfiguredDoubleSerializer
 
 @Serializable
 data class OrderBookResult(
@@ -17,6 +18,7 @@ data class OrderResult(
   val side: EBuySell,
   val pair: ECurrencyPair,
   val price: Long,
+  @Serializable(with = ConfiguredDoubleSerializer::class)
   val quantity: Double,
   val count: Int,
 )
