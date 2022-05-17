@@ -6,6 +6,7 @@ import io.mockk.verify
 import modules.providers.ILimitOrderBookProvider
 import modules.providers.IOrderBookProvider
 import org.junit.jupiter.api.Test
+import types.constants.CurrencyPair
 import types.models.response.OrderBookResult
 
 class TestTransactionBookController {

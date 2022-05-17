@@ -1,9 +1,8 @@
 package types.models.store
 
-import CurrencyPair
-import TransactionSide
-import java.util.Date
-import java.util.UUID
+import types.constants.CurrencyPair
+import types.constants.TransactionSide
+import java.util.*
 
 class OrderBook(override val rows: ArrayList<Order> = ArrayList(0)): IBook<Order>
 

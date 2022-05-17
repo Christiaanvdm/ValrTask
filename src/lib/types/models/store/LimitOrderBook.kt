@@ -1,15 +1,14 @@
 package types.models.store
 
-import CurrencyPair
-import TimeInForce
-import TransactionSide
-import java.util.Date
-import java.util.UUID
+import types.constants.CurrencyPair
+import types.constants.TimeInForce
+import types.constants.TransactionSide
+import java.util.*
 
 class LimitOrderBook(override val rows: ArrayList<LimitOrder> = ArrayList(0)): IBook<LimitOrder>
 
 data class LimitOrder(
-  val customerId: Int,
+  val customerOrderId: String,
   val postOnly: Boolean,
   val timeInForce: TimeInForce,
   override val id: UUID,

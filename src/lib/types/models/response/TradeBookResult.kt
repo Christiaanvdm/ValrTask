@@ -1,8 +1,8 @@
 package types.models.response
 
-import CurrencyPair
-import TransactionSide
 import kotlinx.serialization.Serializable
+import types.constants.CurrencyPair
+import types.constants.TransactionSide
 
 @Serializable
 data class TradeResult(

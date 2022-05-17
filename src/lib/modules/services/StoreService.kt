@@ -1,9 +1,13 @@
 package modules.services
 
-import CurrencyPair
 import com.google.inject.Inject
-import types.models.store.*
-import java.util.UUID
+import types.constants.CurrencyPair
+import types.constants.TransactionSide
+import types.models.store.IOrderAsksBids
+import types.models.store.IStore
+import types.models.store.LimitOrder
+import types.models.store.Order
+import java.util.*
 
 interface IStoreService {
   fun getLatestOrderAsksAndBids(count: Long, pair: CurrencyPair): IOrderAsksBids
@@ -25,7 +29,7 @@ class StoreService @Inject constructor(
       if (lastValue.pair != pair)
         continue
 
-      if (lastValue.side == TransactionSide.sell) {
+      if (lastValue.side == TransactionSide.SELL) {
         if (asks.count() < count) asks.add(lastValue)
       } else if (bids.count() < count) bids.add(lastValue)
     }

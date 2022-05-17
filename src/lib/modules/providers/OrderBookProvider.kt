@@ -1,10 +1,10 @@
 package modules.providers
 
-import CurrencyPair
 import com.google.inject.Inject
 import modules.helpers.roundToDigits
 import modules.services.IStoreService
 import types.constants.Configuration
+import types.constants.CurrencyPair
 import types.models.response.OrderBookResult
 import types.models.response.OrderResult
 import types.models.store.IOrderAsksBids

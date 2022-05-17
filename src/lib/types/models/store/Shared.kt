@@ -1,7 +1,7 @@
 package types.models.store
 
-import CurrencyPair
-import TransactionSide
+import types.constants.CurrencyPair
+import types.constants.TransactionSide
 import java.util.*
 
 interface IBookTransaction {

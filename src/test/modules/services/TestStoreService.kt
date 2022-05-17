@@ -1,12 +1,13 @@
 package modules.services
 
 import org.junit.jupiter.api.Test
+import types.constants.CurrencyPair
+import types.constants.TransactionSide
 import types.models.store.IStore
 import types.models.store.Order
 import types.models.store.OrderBook
 import types.models.store.Store
-import java.util.UUID
-import java.util.Date
+import java.util.*
 
 
 class TestStoreService {
@@ -16,7 +17,7 @@ class TestStoreService {
     1234,
     1.00,
     CurrencyPair.BTCZAR,
-    TransactionSide.buy,
+    TransactionSide.BUY,
     Date(System.currentTimeMillis()),
     1
   )
@@ -34,7 +35,7 @@ class TestStoreService {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.sell, date = Date(System.currentTimeMillis() + 300)
+        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 300)
       ),
       _order.copy(
         id = UUID.randomUUID(),
@@ -42,11 +43,11 @@ class TestStoreService {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.sell, date = Date(System.currentTimeMillis() + 2000)
+        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 2000)
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.sell,
+        side = TransactionSide.SELL,
         pair = CurrencyPair.ETHZAR,
         date = Date(System.currentTimeMillis() + 3000)
       ),
@@ -60,7 +61,7 @@ class TestStoreService {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.sell, date = Date(System.currentTimeMillis() + 5000)
+        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 5000)
       ),
     )
   )

@@ -1,6 +1,8 @@
+package types.constants
+
 enum class TransactionSide {
-  buy,
-  sell,
+  BUY,
+  SELL,
 }
 
 enum class CurrencyPair {

@@ -1,7 +1,7 @@
 package development
 
-import CurrencyPair
-import TransactionSide
+import types.constants.CurrencyPair
+import types.constants.TransactionSide
 import types.models.store.*
 import java.util.*
 
@@ -12,7 +12,7 @@ class MockStore : IStore {
     1234,
     1.00,
     CurrencyPair.BTCZAR,
-    TransactionSide.buy,
+    TransactionSide.BUY,
     Date(System.currentTimeMillis()),
     1,
   )
@@ -32,7 +32,7 @@ class MockStore : IStore {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.sell, date = Date(System.currentTimeMillis() + 300),
+        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 300),
         sequence = 4,
       ),
       _order.copy(
@@ -42,12 +42,12 @@ class MockStore : IStore {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.sell, date = Date(System.currentTimeMillis() + 2000),
+        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 2000),
         sequence = 6,
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.sell,
+        side = TransactionSide.SELL,
         pair = CurrencyPair.ETHZAR,
         date = Date(System.currentTimeMillis() + 3000),
         sequence = 7,
@@ -64,7 +64,7 @@ class MockStore : IStore {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.sell, date = Date(System.currentTimeMillis() + 5000),
+        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 5000),
         sequence = 10,
       ),
     )

@@ -49,18 +49,23 @@ paths:
             $ref: '#/components/schemas/CurrencyPair'
         - name: skip
           in: query
-          description: Skip number of items from the list
-          default: 0
+          description: Skip number of items from the list\
           required: true
-          type: integer
-          format: int32
+          schema:
+            minimum: 0
+            default: 0
+            type: integer
+            format: int32
         - name: limit
           in: query
           description: 'Limit the number of items returned. Max: 100'
-          default: 10
           required: true
-          type: integer
-          format: int32
+          schema:
+            default: 10
+            maximum: 100
+            minimum: 0
+            type: integer
+            format: int32
       responses:
         '200':
           description: successful operation
@@ -101,6 +106,7 @@ components:
       title: CurrencyPair
       description: Available currency pairs
       type: string
+      default: BTCZAR
       enum:
         - BTCZAR
         - ETHZAR
@@ -110,12 +116,13 @@ components:
       description: Specifies if the order was a buy/sell order
       type: string
       enum:
-        - Buy
-        - Sell
+        - BUY
+        - SELL
     TimeInForce:
       title: Time In Force
       description: Expiry parameter for limit orders
       type: string
+      default: GTC
       enum:
         - GTC
         - IOC
@@ -149,14 +156,18 @@ components:
         pair:
           $ref: '#/components/schemas/CurrencyPair'
         price:
-          type: number
-          format: float
-        quantity:
           type: integer
           format: int64
+          minimum: 0
+        quantity:
+          type: number
+          format: float
+          multipleOf: 0.000001
+          minimum: 0
         count:
           type: integer
           format: int64
+          minimum: 0
     LimitOrder:
       title: LimitOrder
       description: A limit order
@@ -173,8 +184,8 @@ components:
           type: boolean
           default: false
         customerOrderId:
-          type: integer
-          format: int64
+          type: string
+          minLength: 1
         timeInForce:
           $ref: '#/components/schemas/TimeInForce'
     LimitOrderResponse:

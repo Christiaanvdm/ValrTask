@@ -1,11 +1,11 @@
 package modules.providers
 
-import CurrencyPair
-import TransactionSide
 import io.mockk.*
 import modules.services.IStoreService
 import org.junit.jupiter.api.Test
 import types.constants.Configuration
+import types.constants.CurrencyPair
+import types.constants.TransactionSide
 import types.models.store.IOrderAsksBids
 import types.models.store.Order
 import java.util.*
@@ -25,7 +25,7 @@ class TestOrderBookProvider {
     1234,
     1.0012344786,
     CurrencyPair.BTCZAR,
-    TransactionSide.sell,
+    TransactionSide.SELL,
     Date(System.currentTimeMillis()),
     1,
   )
@@ -40,7 +40,7 @@ class TestOrderBookProvider {
 
   private val _asks = _orders.toList().map { ask ->
     ask.copy(
-      side = TransactionSide.buy,
+      side = TransactionSide.BUY,
       date = Date(System.currentTimeMillis() + 100),
       sequence = 4,
     )
@@ -94,7 +94,7 @@ class TestOrderBookProvider {
     val bids = _orders.toList()
       .map { ask ->
         ask.copy(
-          side = TransactionSide.buy,
+          side = TransactionSide.BUY,
           date = Date(System.currentTimeMillis() + 100),
           sequence = 4,
         )

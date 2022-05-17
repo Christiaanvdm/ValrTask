@@ -1,18 +1,18 @@
 package controllers
 
-import CurrencyPair
 import com.google.inject.Inject
 import modules.providers.ILimitOrderBookProvider
 import modules.providers.IOrderBookProvider
-import types.models.query.LimitOrderQuery
+import types.constants.CurrencyPair
+import types.models.query.LimitOrderRequest
 import types.models.query.Paginator
+import types.models.response.LimitOrderResult
 import types.models.response.OrderBookResult
 import types.models.response.TradeResult
-import java.util.*
 
 interface ITransactionBooksController {
   fun getOrderBook(currencyPair: CurrencyPair): OrderBookResult
-  fun postLimitOrder(query: LimitOrderQuery): UUID
+  fun postLimitOrder(query: LimitOrderRequest): LimitOrderResult
   fun getTradeHistory(query: Paginator): List<TradeResult>
 }
 
@@ -23,7 +23,7 @@ class TransactionBooksController @Inject constructor(
   override fun getOrderBook(currencyPair: CurrencyPair): OrderBookResult =
     _orderBookProvider.getOrderHistory(currencyPair)
 
-  override fun postLimitOrder(query: LimitOrderQuery): UUID =
+  override fun postLimitOrder(query: LimitOrderRequest): LimitOrderResult =
     _limitOrderBookProvider.createLimitOrder(query)
 
   override fun getTradeHistory(query: Paginator): List<TradeResult> {

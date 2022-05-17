@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import types.constants.Configuration
+import types.constants.CurrencyPair
 import types.exceptions.UserOutputParseException
 import types.models.response.OrderBookResult
 import types.models.response.OrderResult
