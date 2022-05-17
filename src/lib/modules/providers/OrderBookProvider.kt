@@ -17,7 +17,7 @@ interface IOrderBookProvider {
 
 open class OrderBookProvider @Inject constructor(private val _dataService: IDataService) : IOrderBookProvider {
   private fun mapOrderToOrderResult(order: Order): OrderResult =
-    OrderResult(order.side, order.pair, order.price, roundToDigits(order.quantity, Configuration.FloatDigitsOutputCount), order.count)
+    OrderResult(order.side, order.pair, order.price, roundToDigits(order.quantity, Configuration.OutputFloatPrecision), order.count)
 
   protected fun getLastSequenceAndDate(data: IOrderAsksBids): Pair<Int, Date> {
     val lastAsk = data.asks.first()
