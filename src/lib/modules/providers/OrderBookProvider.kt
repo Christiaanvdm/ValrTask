@@ -23,9 +23,9 @@ open class OrderBookProvider @Inject constructor(private val _dataService: IData
     val lastAsk = data.asks.first()
     val lastBid = data.bids.first()
 
-    val askDateLatest = lastAsk.date >= lastBid.date
-    val lastSequence = if (askDateLatest) lastAsk.sequence else lastBid.sequence
-    val lastDate = if (askDateLatest) lastAsk.date else lastBid.date
+    val askSequenceLatest = lastAsk.sequence >= lastBid.sequence
+    val lastSequence = if (askSequenceLatest) lastAsk.sequence else lastBid.sequence
+    val lastDate = if (askSequenceLatest) lastAsk.date else lastBid.date
 
     return Pair(lastSequence, lastDate)
   }
