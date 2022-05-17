@@ -19,20 +19,20 @@ open class OrderBookProvider @Inject constructor(private val _storeService: ISto
   private fun mapOrderToOrderResult(order: Order): OrderResult =
     OrderResult(order.side, order.pair, order.price, roundToDigits(order.quantity, Configuration.FloatDigitsOutputCount), order.count)
 
-  protected fun getLastIndexAndDate(data: IOrderAsksBids): Pair<Int, Date> {
+  protected fun getLastSequenceAndDate(data: IOrderAsksBids): Pair<Int, Date> {
     val lastAsk = data.asks.first()
     val lastBid = data.bids.first()
 
     val askDateLatest = lastAsk.date >= lastBid.date
-    val lastIndex = if (askDateLatest) _storeService.getOrderIndex(lastAsk) else _storeService.getOrderIndex(lastBid)
+    val lastSequence = if (askDateLatest) lastAsk.sequence else lastBid.sequence
     val lastDate = if (askDateLatest) lastAsk.date else lastBid.date
 
-    return Pair(lastIndex, lastDate)
+    return Pair(lastSequence, lastDate)
   }
 
   override fun getOrderHistory(pair: CurrencyPair): OrderBookResult {
     val data = _storeService.getLatestOrderAsksAndBids(Configuration.GetOrderBookQueryAmount, pair)
-    val (lastIndex, lastDate) = getLastIndexAndDate(data)
+    val (lastIndex, lastDate) = getLastSequenceAndDate(data)
 
     return OrderBookResult(
       lastDate.toString(),

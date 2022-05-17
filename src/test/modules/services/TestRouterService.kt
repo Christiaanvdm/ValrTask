@@ -1,10 +1,12 @@
-import controllers.IOrderBookController
+import controllers.ITransactionBooksController
 import io.mockk.*
 import io.vertx.core.Future
 import io.vertx.core.Vertx
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.openapi.RouterBuilder
 import io.vertx.ext.web.validation.BadRequestException
+import io.vertx.ext.web.validation.RequestParameter
+import io.vertx.ext.web.validation.RequestParameters
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import modules.services.IRouterService
@@ -19,19 +21,19 @@ import types.models.response.OrderResult
 import java.io.InvalidObjectException
 import java.util.*
 
-class RouterServiceExposed(orderBookController: IOrderBookController) : RouterService(orderBookController) {
+class RouterServiceExposed(orderBookController: ITransactionBooksController) : RouterService(orderBookController) {
   fun handleValidationErrorsExposed(ctx: RoutingContext) =
     super.handleValidationErrors(ctx)
 
   fun getValidationErrorExposed(failure: Throwable): String =
     super.getValidationError(failure)
 
-  fun handleGetOrderBookExposed(ctx: RoutingContext) =
-    super.handleGetOrderBook(ctx)
+  var handleGetOrderBookExposed =
+    handleGetOrderBook
 }
 
 class TestRouterService {
-  private val _orderBookControllerMock: IOrderBookController = mockk()
+  private val _orderBookControllerMock: ITransactionBooksController = mockk()
   private val _exposed = RouterServiceExposed(_orderBookControllerMock)
   private val _routerService: IRouterService = _exposed
 
@@ -89,19 +91,20 @@ class TestRouterService {
 
   @Test
   fun handleGetOrderBook_callsExpected_ReturnsExpected() {
-    val exposed = spyk(_exposed, recordPrivateCalls = true)
-
     val ctxMock = mockk<RoutingContext>()
     val orderBookResult = OrderBookResult(Date().toString(), 10, emptyList<OrderResult>(), emptyList<OrderResult>())
-
-    every { exposed["getCurrencyPair"](ctxMock) } returns CurrencyPair.BTCZAR
     every { _orderBookControllerMock.getOrderBook(any()) } returns orderBookResult
     every { ctxMock.end(any<String>()) } returns mockk<Future<Void>>()
 
-    // ACT
-    exposed.handleGetOrderBookExposed(ctxMock)
+    val requestParamMock: RequestParameters = mockk()
+    every { ctxMock.get<RequestParameters>(any()) } returns requestParamMock
+    val pathParamMock: RequestParameter = mockk()
+    every { requestParamMock.pathParameter(any()) } returns pathParamMock
+    every { pathParamMock.toString() } returns CurrencyPair.BTCZAR.toString()
 
-    verify { exposed["getCurrencyPair"](ctxMock) }
+    // ACT
+    _exposed.handleGetOrderBookExposed(ctxMock)
+
     verify { _orderBookControllerMock.getOrderBook(CurrencyPair.BTCZAR) }
     verify { ctxMock.end(Json.encodeToString(orderBookResult)) }
   }

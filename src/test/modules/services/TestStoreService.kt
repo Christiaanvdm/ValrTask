@@ -11,14 +11,16 @@ import java.util.Date
 
 class TestStoreService {
   private val _order = Order(
-    UUID.randomUUID(),
-    OrderSide.buy,
-    CurrencyPair.BTCZAR,
-    1.00,
-    1234,
     1,
+    UUID.randomUUID(),
+    1234,
+    1.00,
+    CurrencyPair.BTCZAR,
+    TransactionSide.buy,
     Date(System.currentTimeMillis()),
+    1
   )
+
   private val _orderBook = OrderBook(
     arrayListOf(
       _order,
@@ -32,7 +34,7 @@ class TestStoreService {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = OrderSide.sell, date = Date(System.currentTimeMillis() + 300)
+        side = TransactionSide.sell, date = Date(System.currentTimeMillis() + 300)
       ),
       _order.copy(
         id = UUID.randomUUID(),
@@ -40,11 +42,11 @@ class TestStoreService {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = OrderSide.sell, date = Date(System.currentTimeMillis() + 2000)
+        side = TransactionSide.sell, date = Date(System.currentTimeMillis() + 2000)
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = OrderSide.sell,
+        side = TransactionSide.sell,
         pair = CurrencyPair.ETHZAR,
         date = Date(System.currentTimeMillis() + 3000)
       ),
@@ -58,13 +60,14 @@ class TestStoreService {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = OrderSide.sell, date = Date(System.currentTimeMillis() + 5000)
+        side = TransactionSide.sell, date = Date(System.currentTimeMillis() + 5000)
       ),
     )
   )
+
   private val _store: IStore = Store(_orderBook)
   private val _storeService: IStoreService = StoreService(_store)
-  private val orders = _orderBook.orders
+  private val orders = _orderBook.rows
 
   //region GetLatestOrderAsksAndBids
 

@@ -1,0 +1,187 @@
+openapi: 3.0.0
+servers:
+  - url: 'http://localhost/'
+info:
+  description: >-
+    This API allows for basic order and trade book GET functionality
+  version: 1.0.0
+  title: Valr Acceptance Task
+tags:
+  - name: OrderBook
+    description: Retrieve or place OrderBook orders
+paths:
+  /{currencyPair}/orderbook:
+    get:
+      tags:
+        - Public API
+      summary: Get the latest OrderBook history
+      description: ''
+      operationId: getOrderBook
+      parameters:
+        - name: currencyPair
+          in: path
+          description: Status values that need to be considered for filter
+          required: true
+          schema:
+            $ref: '#/components/schemas/CurrencyPair'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderBook'
+        '405':
+          description: Invalid input
+  /{currencyPair}/trades:
+    get:
+      tags:
+        - Public API
+      summary: Get the trade history for a given currency pair.
+      description: ''
+      operationId: getTradeHistory
+      parameters:
+        - name: currencyPair
+          in: path
+          description: Specify the currency pair for which you want to query the trade history.
+          required: true
+          schema:
+            $ref: '#/components/schemas/CurrencyPair'
+        - name: skip
+          in: query
+          description: Skip number of items from the list
+          default: 0
+          required: true
+          type: integer
+          format: int32
+        - name: limit
+          in: query
+          description: 'Limit the number of items returned. Max: 100'
+          default: 10
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LimitOrder'
+        '405':
+          description: Invalid input
+  /limit/order:
+    post:
+      tags:
+        - Orders
+      summary: Create a limit order
+      description: ''
+      operationId: postLimitOrder
+      requestBody:
+        description:  Create a limit order
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LimitOrder'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LimitOrderResponse'
+        '405':
+          description: Invalid input
+components:
+  schemas:
+    CurrencyPair:
+      title: CurrencyPair
+      description: Available currency pairs
+      type: string
+      enum:
+        - BTCZAR
+        - ETHZAR
+        - XRPZAR
+    BuySell:
+      title: Buy/Sell
+      description: Specifies if the order was a buy/sell order
+      type: string
+      enum:
+        - Buy
+        - Sell
+    TimeInForce:
+      title: Time In Force
+      description: Expiry parameter for limit orders
+      type: string
+      enum:
+        - GTC
+        - IOC
+        - FOK
+    OrderBook:
+      title: OrderBook
+      description: Latest Asks, Bids and DateTime updated
+      type: object
+      properties:
+        asks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        bids:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        lastChange:
+          type: string
+          format: date-time
+        sequenceNumber:
+          type: integer
+          format: int32
+    Order:
+      title: Order
+      description: An OrderBook order
+      type: object
+      properties:
+        side:
+          $ref: '#/components/schemas/BuySell'
+        pair:
+          $ref: '#/components/schemas/CurrencyPair'
+        price:
+          type: number
+          format: float
+        quantity:
+          type: integer
+          format: int64
+        count:
+          type: integer
+          format: int64
+    LimitOrder:
+      title: LimitOrder
+      description: A limit order
+      type: object
+      properties:
+        side:
+          $ref: '#/components/schemas/BuySell'
+        quantity:
+          type: number
+          format: float
+        pair:
+          $ref: '#/components/schemas/CurrencyPair'
+        postOnly:
+          type: boolean
+          default: false
+        customerOrderId:
+          type: integer
+          format: int64
+        timeInForce:
+          $ref: '#/components/schemas/TimeInForce'
+    LimitOrderResponse:
+      title: LimitOrderResponse
+      description: Response after placing limit order
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid

@@ -2,7 +2,7 @@ package modules.services
 
 import CurrencyPair
 import com.google.inject.Inject
-import controllers.IOrderBookController
+import controllers.ITransactionBooksController
 import io.vertx.core.Future
 import io.vertx.core.Vertx
 import io.vertx.ext.web.RoutingContext
@@ -20,9 +20,18 @@ interface IRouterService {
   fun createRouterBuilder(vertx: Vertx): Future<RouterBuilder>
 }
 
-open class RouterService @Inject constructor(private val orderBookController: IOrderBookController) : IRouterService {
+open class RouterService @Inject constructor(private val orderBookController: ITransactionBooksController) : IRouterService {
   private fun getCurrencyPair(ctx: RoutingContext) =
     getQueryParam<CurrencyPair>(ctx, "currencyPair")
+
+  private fun RouterBuilder.handleOperation(operation: String, handlerFn: (ctx: RoutingContext) -> Unit) {
+    this
+      .operation(operation)
+      .handler(handlerFn)
+      .failureHandler { ctx ->
+        handleValidationErrors(ctx)
+      }
+  }
 
   protected fun getValidationError(failure: Throwable): String {
     return when (failure) {
@@ -40,21 +49,24 @@ open class RouterService @Inject constructor(private val orderBookController: IO
     ctx.end("Validation error. ${getValidationError(ctx.failure())}".trimEnd())
   }
 
-  protected fun handleGetOrderBook(ctx: RoutingContext) {
-    val currencyPair = getCurrencyPair(ctx)
+  protected val handleGetOrderBook: (ctx: RoutingContext) -> Unit = {
+    val currencyPair = getCurrencyPair(it)
     val result = orderBookController.getOrderBook(currencyPair)
-    ctx.end(Json.encodeToString(result))
+    it.end(Json.encodeToString(result))
+  }
+
+  protected val handleGetTradeHistory: (ctx: RoutingContext) -> Unit = {
+    TODO("")
+  }
+
+  protected val handlePostLimitOrder: (ctx: RoutingContext) -> Unit = {
+    TODO("")
   }
 
   override fun setupOperations(routerBuilder: RouterBuilder) {
-    routerBuilder
-      .operation("getOrderBook")
-      .handler { ctx ->
-        handleGetOrderBook(ctx)
-      }
-      .failureHandler { ctx ->
-        handleValidationErrors(ctx)
-      }
+    routerBuilder.handleOperation("getOrderBook", handleGetOrderBook)
+    routerBuilder.handleOperation("getTradeHistory", handleGetTradeHistory)
+    routerBuilder.handleOperation("postLimitOrder", handlePostLimitOrder)
   }
 
   override fun createRouterBuilder(vertx: Vertx): Future<RouterBuilder> =
