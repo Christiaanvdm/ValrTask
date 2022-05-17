@@ -2,13 +2,12 @@ package types.models.store
 
 import CurrencyPair
 import TransactionSide
-import java.util.Date
-import java.util.UUID
+import java.util.*
 
-class OrderBook(override val rows: ArrayList<Order> = ArrayList(0)): IBook<Order>
+class TradeBook(override val rows: ArrayList<Trade> = ArrayList(0)): IBook<Trade>
 
-data class Order(
-  val count: Int,
+data class Trade(
+  val quoteVolume: Double,
   override val id: UUID,
   override val price: Long,
   override val quantity: Double,
@@ -17,8 +16,3 @@ data class Order(
   override val date: Date,
   override val sequence: Int,
 ) : IBookTransaction
-
-interface IOrderAsksBids {
-  val asks: List<Order>
-  val bids: List<Order>
-}

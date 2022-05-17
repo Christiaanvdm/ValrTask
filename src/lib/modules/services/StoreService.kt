@@ -2,18 +2,19 @@ package modules.services
 
 import CurrencyPair
 import com.google.inject.Inject
-import types.models.store.IOrderAsksBids
-import types.models.store.IStore
-import types.models.store.Order
+import types.models.store.*
+import java.util.UUID
 
 interface IStoreService {
   fun getLatestOrderAsksAndBids(count: Long, pair: CurrencyPair): IOrderAsksBids
-  fun getOrderIndex(order: Order): Int
+  fun insertLimitOrder(order: LimitOrder): UUID
 }
 
-class StoreService @Inject constructor(private val store: IStore): IStoreService {
+class StoreService @Inject constructor(
+  private val _store: IStore,
+) : IStoreService {
   override fun getLatestOrderAsksAndBids(count: Long, pair: CurrencyPair): IOrderAsksBids {
-    val orders = store.orderBook.orders.toMutableList()
+    val orders = _store.orderBook.rows.toMutableList()
     orders.sortBy { it.date }
 
     val asks = mutableListOf<Order>()
@@ -24,7 +25,7 @@ class StoreService @Inject constructor(private val store: IStore): IStoreService
       if (lastValue.pair != pair)
         continue
 
-      if (lastValue.side == OrderSide.sell) {
+      if (lastValue.side == TransactionSide.sell) {
         if (asks.count() < count) asks.add(lastValue)
       } else if (bids.count() < count) bids.add(lastValue)
     }
@@ -35,5 +36,9 @@ class StoreService @Inject constructor(private val store: IStore): IStoreService
     }
   }
 
-  override fun getOrderIndex(order: Order): Int = store.orderBook.orders.indexOf(order)
+  override fun insertLimitOrder(order: LimitOrder): UUID {
+    _store.limitOrderBook.rows.add(order)
+
+    return order.id
+  }
 }

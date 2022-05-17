@@ -1,7 +1,7 @@
 package types.models.response
 
 import CurrencyPair
-import OrderSide
+import TransactionSide
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -14,7 +14,7 @@ data class OrderBookResult(
 
 @Serializable
 data class OrderResult(
-  val side: OrderSide,
+  val side: TransactionSide,
   val pair: CurrencyPair,
   val price: Long,
   val quantity: Double,
