@@ -35,41 +35,50 @@ class TestDataService {
       _order,
       _order.copy(
         id = UUID.randomUUID(),
-        date = Date(System.currentTimeMillis() + 100)
+        date = Date(System.currentTimeMillis() + 100),
+        sequence = 2,
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        date = Date(System.currentTimeMillis() + 200)
+        date = Date(System.currentTimeMillis() + 200),
+        sequence = 3,
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 300)
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 300),
+        sequence = 4,
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        date = Date(System.currentTimeMillis() + 1000)
+        date = Date(System.currentTimeMillis() + 1000),
+        sequence = 5,
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 2000)
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 2000),
+        sequence = 6,
       ),
       _order.copy(
         id = UUID.randomUUID(),
         side = EBuySell.SELL,
         pair = ECurrencyPair.ETHZAR,
-        date = Date(System.currentTimeMillis() + 3000)
+        date = Date(System.currentTimeMillis() + 3000),
+        sequence = 7,
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        pair = ECurrencyPair.ETHZAR, date = Date(System.currentTimeMillis() + 4000)
+        pair = ECurrencyPair.ETHZAR, date = Date(System.currentTimeMillis() + 4000),
+        sequence = 8,
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        date = Date(System.currentTimeMillis() + 4500)
+        date = Date(System.currentTimeMillis() + 4500),
+        sequence = 9,
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 5000)
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 5000),
+        sequence = 10,
       ),
     )
   )

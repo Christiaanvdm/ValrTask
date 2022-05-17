@@ -17,7 +17,7 @@ class DataService @Inject constructor(
 ) : IDataService {
   override fun getLatestOrderAsksAndBids(count: Int, pair: ECurrencyPair): IOrderAsksBids {
     val orders = _store.orderBook.rows.toMutableList()
-    orders.sortBy { it.date }
+    orders.sortBy { it.sequence }
 
     val asks = mutableListOf<Order>()
     val bids = mutableListOf<Order>()
