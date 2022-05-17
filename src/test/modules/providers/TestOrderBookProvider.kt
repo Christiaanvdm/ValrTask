@@ -4,8 +4,8 @@ import io.mockk.*
 import modules.services.IStoreService
 import org.junit.jupiter.api.Test
 import types.constants.Configuration
-import types.constants.CurrencyPair
-import types.constants.TransactionSide
+import types.constants.EBuySell
+import types.constants.ECurrencyPair
 import types.models.store.IOrderAsksBids
 import types.models.store.Order
 import java.util.*
@@ -24,8 +24,8 @@ class TestOrderBookProvider {
     UUID.randomUUID(),
     1234,
     1.0012344786,
-    CurrencyPair.BTCZAR,
-    TransactionSide.SELL,
+    ECurrencyPair.BTCZAR,
+    EBuySell.SELL,
     Date(System.currentTimeMillis()),
     1,
   )
@@ -40,7 +40,7 @@ class TestOrderBookProvider {
 
   private val _asks = _orders.toList().map { ask ->
     ask.copy(
-      side = TransactionSide.BUY,
+      side = EBuySell.BUY,
       date = Date(System.currentTimeMillis() + 100),
       sequence = 4,
     )
@@ -66,9 +66,9 @@ class TestOrderBookProvider {
     every { orderBook["getLastSequenceAndDate"](asksBidsMock) } returns Pair(1, date)
 
     // ACT
-    val result = orderBook.getOrderHistory(CurrencyPair.BTCZAR)
+    val result = orderBook.getOrderHistory(ECurrencyPair.BTCZAR)
 
-    verify { _storeServiceMock.getLatestOrderAsksAndBids(Configuration.GetOrderBookQueryAmount, CurrencyPair.BTCZAR) }
+    verify { _storeServiceMock.getLatestOrderAsksAndBids(Configuration.GetOrderBookQueryAmount, ECurrencyPair.BTCZAR) }
     verify { orderBook["getLastSequenceAndDate"](asksBidsMock) }
     assert(result.lastChangeDate == date.toString())
     assert(result.sequenceNumber == 1.toLong())
@@ -94,7 +94,7 @@ class TestOrderBookProvider {
     val bids = _orders.toList()
       .map { ask ->
         ask.copy(
-          side = TransactionSide.BUY,
+          side = EBuySell.BUY,
           date = Date(System.currentTimeMillis() + 100),
           sequence = 4,
         )

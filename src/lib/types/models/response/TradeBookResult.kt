@@ -1,16 +1,16 @@
 package types.models.response
 
 import kotlinx.serialization.Serializable
-import types.constants.CurrencyPair
-import types.constants.TransactionSide
+import types.constants.EBuySell
+import types.constants.ECurrencyPair
 
 @Serializable
 data class TradeResult(
   val price: Long,
   val quantity: Int,
-  val currencyPair: CurrencyPair,
+  val currencyPair: ECurrencyPair,
   val tradedAt: String,
-  val takerSide: TransactionSide,
+  val takerSide: EBuySell,
   val sequenceId: Int,
   val id: String,
   val quoteVolume: Double,

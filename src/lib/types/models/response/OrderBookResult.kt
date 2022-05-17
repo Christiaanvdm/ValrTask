@@ -1,8 +1,8 @@
 package types.models.response
 
 import kotlinx.serialization.Serializable
-import types.constants.CurrencyPair
-import types.constants.TransactionSide
+import types.constants.EBuySell
+import types.constants.ECurrencyPair
 
 @Serializable
 data class OrderBookResult(
@@ -14,8 +14,8 @@ data class OrderBookResult(
 
 @Serializable
 data class OrderResult(
-  val side: TransactionSide,
-  val pair: CurrencyPair,
+  val side: EBuySell,
+  val pair: ECurrencyPair,
   val price: Long,
   val quantity: Double,
   val count: Int,

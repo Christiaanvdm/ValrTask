@@ -14,7 +14,7 @@ import kotlinx.serialization.json.Json
 import modules.helpers.getPathParameter
 import modules.helpers.getRequestBody
 import types.constants.Configuration
-import types.constants.CurrencyPair
+import types.constants.ECurrencyPair
 import types.exceptions.UserOutputParseException
 import types.models.query.LimitOrderRequest
 
@@ -26,7 +26,7 @@ interface IRouterService {
 
 open class RouterService @Inject constructor(private val transactionBookController: ITransactionBooksController) : IRouterService {
   private fun getCurrencyPair(ctx: RoutingContext) =
-    getPathParameter<CurrencyPair>(ctx, "currencyPair")
+    getPathParameter<ECurrencyPair>(ctx, "currencyPair")
 
   private fun RouterBuilder.handleOperation(operation: String, handlerFn: (ctx: RoutingContext) -> Unit) {
     this
@@ -40,9 +40,9 @@ open class RouterService @Inject constructor(private val transactionBookControll
   protected fun getValidationError(failure: Throwable): String {
     println("Validation error: ${failure.message}")
     return when (failure) {
-      is UserOutputParseException -> "Endpoint data parsing error. Reason: ${failure.message}"
+      is UserOutputParseException -> "Endpoint data parsing error.\n Reason: ${failure.message}"
       is RequestPredicateException -> "Content invalid format."
-      is BodyProcessorException -> "Your request body was composed incorrectly. Reason: ${failure.message}"
+      is BodyProcessorException -> "Your request body was composed incorrectly.\n Reason: ${failure.message}"
       is BadRequestException -> "Your request could not be parsed."
       else -> throw failure
     }

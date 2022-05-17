@@ -6,7 +6,7 @@ import io.mockk.verify
 import modules.providers.ILimitOrderBookProvider
 import modules.providers.IOrderBookProvider
 import org.junit.jupiter.api.Test
-import types.constants.CurrencyPair
+import types.constants.ECurrencyPair
 import types.models.response.OrderBookResult
 
 class TestTransactionBookController {
@@ -23,9 +23,9 @@ class TestTransactionBookController {
     val expectedResult: OrderBookResult = mockk()
     every { _orderBookProviderMock.getOrderHistory(any()) } returns expectedResult
 
-    val result = _transactionBookController.getOrderBook(CurrencyPair.BTCZAR)
+    val result = _transactionBookController.getOrderBook(ECurrencyPair.BTCZAR)
 
-    verify { _transactionBookController.getOrderBook(CurrencyPair.BTCZAR) }
+    verify { _transactionBookController.getOrderBook(ECurrencyPair.BTCZAR) }
     assert(result == expectedResult)
   }
 }

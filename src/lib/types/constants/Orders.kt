@@ -1,17 +1,21 @@
 package types.constants
 
-enum class TransactionSide {
+import kotlinx.serialization.Serializable
+import types.serializers.BuySellSerializer
+
+@Serializable(with = BuySellSerializer::class)
+enum class EBuySell {
   BUY,
   SELL,
 }
 
-enum class CurrencyPair {
+enum class ECurrencyPair {
   BTCZAR,
   ETHZAR,
   XRPZAR,
 }
 
-enum class TimeInForce {
+enum class ETimeInForce {
   GTC,
   IOC,
   FOK,

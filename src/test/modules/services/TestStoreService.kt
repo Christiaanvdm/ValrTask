@@ -1,8 +1,8 @@
 package modules.services
 
 import org.junit.jupiter.api.Test
-import types.constants.CurrencyPair
-import types.constants.TransactionSide
+import types.constants.ECurrencyPair
+import types.constants.EBuySell
 import types.models.store.IStore
 import types.models.store.Order
 import types.models.store.OrderBook
@@ -16,8 +16,8 @@ class TestStoreService {
     UUID.randomUUID(),
     1234,
     1.00,
-    CurrencyPair.BTCZAR,
-    TransactionSide.BUY,
+    ECurrencyPair.BTCZAR,
+    EBuySell.BUY,
     Date(System.currentTimeMillis()),
     1
   )
@@ -35,7 +35,7 @@ class TestStoreService {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 300)
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 300)
       ),
       _order.copy(
         id = UUID.randomUUID(),
@@ -43,17 +43,17 @@ class TestStoreService {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 2000)
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 2000)
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.SELL,
-        pair = CurrencyPair.ETHZAR,
+        side = EBuySell.SELL,
+        pair = ECurrencyPair.ETHZAR,
         date = Date(System.currentTimeMillis() + 3000)
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        pair = CurrencyPair.ETHZAR, date = Date(System.currentTimeMillis() + 4000)
+        pair = ECurrencyPair.ETHZAR, date = Date(System.currentTimeMillis() + 4000)
       ),
       _order.copy(
         id = UUID.randomUUID(),
@@ -61,7 +61,7 @@ class TestStoreService {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 5000)
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 5000)
       ),
     )
   )
@@ -75,7 +75,7 @@ class TestStoreService {
   @Test
   fun getLatestOrderAsksAndBids_fullResult_returnsExpectedCurrencyPairs() {
     // ACT
-    val result = _storeService.getLatestOrderAsksAndBids(3, CurrencyPair.BTCZAR)
+    val result = _storeService.getLatestOrderAsksAndBids(3, ECurrencyPair.BTCZAR)
 
     val asks = result.asks
     val bids = result.bids
@@ -90,7 +90,7 @@ class TestStoreService {
 
   @Test
   fun getLatestOrderAsksAndBids_notEnoughItems_returnsExpectedCurrencyPairs() {
-    val result = _storeService.getLatestOrderAsksAndBids(3, CurrencyPair.ETHZAR)
+    val result = _storeService.getLatestOrderAsksAndBids(3, ECurrencyPair.ETHZAR)
 
     val asks = result.asks
     val bids = result.bids

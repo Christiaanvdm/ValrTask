@@ -1,7 +1,7 @@
 package development
 
-import types.constants.CurrencyPair
-import types.constants.TransactionSide
+import types.constants.ECurrencyPair
+import types.constants.EBuySell
 import types.models.store.*
 import java.util.*
 
@@ -11,8 +11,8 @@ class MockStore : IStore {
     UUID.randomUUID(),
     1234,
     1.00,
-    CurrencyPair.BTCZAR,
-    TransactionSide.BUY,
+    ECurrencyPair.BTCZAR,
+    EBuySell.BUY,
     Date(System.currentTimeMillis()),
     1,
   )
@@ -32,7 +32,7 @@ class MockStore : IStore {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 300),
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 300),
         sequence = 4,
       ),
       _order.copy(
@@ -42,19 +42,19 @@ class MockStore : IStore {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 2000),
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 2000),
         sequence = 6,
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.SELL,
-        pair = CurrencyPair.ETHZAR,
+        side = EBuySell.SELL,
+        pair = ECurrencyPair.ETHZAR,
         date = Date(System.currentTimeMillis() + 3000),
         sequence = 7,
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        pair = CurrencyPair.ETHZAR, date = Date(System.currentTimeMillis() + 4000),
+        pair = ECurrencyPair.ETHZAR, date = Date(System.currentTimeMillis() + 4000),
         sequence = 8,
       ),
       _order.copy(
@@ -64,7 +64,7 @@ class MockStore : IStore {
       ),
       _order.copy(
         id = UUID.randomUUID(),
-        side = TransactionSide.SELL, date = Date(System.currentTimeMillis() + 5000),
+        side = EBuySell.SELL, date = Date(System.currentTimeMillis() + 5000),
         sequence = 10,
       ),
     )

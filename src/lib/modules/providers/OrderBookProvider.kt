@@ -4,7 +4,7 @@ import com.google.inject.Inject
 import modules.helpers.roundToDigits
 import modules.services.IStoreService
 import types.constants.Configuration
-import types.constants.CurrencyPair
+import types.constants.ECurrencyPair
 import types.models.response.OrderBookResult
 import types.models.response.OrderResult
 import types.models.store.IOrderAsksBids
@@ -12,7 +12,7 @@ import types.models.store.Order
 import java.util.*
 
 interface IOrderBookProvider {
-  fun getOrderHistory(pair: CurrencyPair): OrderBookResult
+  fun getOrderHistory(pair: ECurrencyPair): OrderBookResult
 }
 
 open class OrderBookProvider @Inject constructor(private val _storeService: IStoreService) : IOrderBookProvider {
@@ -30,7 +30,7 @@ open class OrderBookProvider @Inject constructor(private val _storeService: ISto
     return Pair(lastSequence, lastDate)
   }
 
-  override fun getOrderHistory(pair: CurrencyPair): OrderBookResult {
+  override fun getOrderHistory(pair: ECurrencyPair): OrderBookResult {
     val data = _storeService.getLatestOrderAsksAndBids(Configuration.GetOrderBookQueryAmount, pair)
     val (lastIndex, lastDate) = getLastSequenceAndDate(data)
 

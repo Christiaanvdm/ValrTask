@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import types.constants.Configuration
-import types.constants.CurrencyPair
+import types.constants.ECurrencyPair
 import types.exceptions.UserOutputParseException
 import types.models.response.OrderBookResult
 import types.models.response.OrderResult
@@ -101,12 +101,12 @@ class TestRouterService {
     every { ctxMock.get<RequestParameters>(any()) } returns requestParamMock
     val pathParamMock: RequestParameter = mockk()
     every { requestParamMock.pathParameter(any()) } returns pathParamMock
-    every { pathParamMock.toString() } returns CurrencyPair.BTCZAR.toString()
+    every { pathParamMock.toString() } returns ECurrencyPair.BTCZAR.toString()
 
     // ACT
     _exposed.handleGetOrderBookExposed(ctxMock)
 
-    verify { _orderBookControllerMock.getOrderBook(CurrencyPair.BTCZAR) }
+    verify { _orderBookControllerMock.getOrderBook(ECurrencyPair.BTCZAR) }
     verify { ctxMock.end(Json.encodeToString(orderBookResult)) }
   }
 
