@@ -5,22 +5,14 @@ import io.vertx.core.Vertx
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.openapi.RouterBuilder
 import io.vertx.ext.web.validation.BadRequestException
-import io.vertx.ext.web.validation.RequestParameter
-import io.vertx.ext.web.validation.RequestParameters
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import modules.services.IRouterService
 import modules.services.RouterService
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import types.constants.Configuration
-import types.constants.ECurrencyPair
 import types.exceptions.UserOutputParseException
-import types.models.response.OrderBookResult
-import types.models.response.OrderResult
 import java.io.InvalidObjectException
-import java.util.*
 
 class RouterServiceExposed(orderBookController: ITransactionBooksController) : RouterService(orderBookController) {
   fun handleValidationErrorsExposed(ctx: RoutingContext) =
@@ -28,9 +20,6 @@ class RouterServiceExposed(orderBookController: ITransactionBooksController) : R
 
   fun getValidationErrorExposed(failure: Throwable): String =
     super.getValidationError(failure)
-
-  var handleGetOrderBookExposed =
-    handleGetOrderBook
 }
 
 class TestRouterService {
@@ -84,30 +73,6 @@ class TestRouterService {
   @Test
   fun getValidationError_ThrowsExceptionIfNotHandled() {
     assertThrows<InvalidObjectException> { _exposed.getValidationErrorExposed(InvalidObjectException("")) }
-  }
-
-  //endregion
-
-  //region handleGetOrderBook
-
-  @Test
-  fun handleGetOrderBook_callsExpected_ReturnsExpected() {
-    val ctxMock = mockk<RoutingContext>()
-    val orderBookResult = OrderBookResult(Date().toString(), 10, emptyList<OrderResult>(), emptyList<OrderResult>())
-    every { _orderBookControllerMock.getOrderBook(any()) } returns orderBookResult
-    every { ctxMock.end(any<String>()) } returns mockk<Future<Void>>()
-
-    val requestParamMock: RequestParameters = mockk()
-    every { ctxMock.get<RequestParameters>(any()) } returns requestParamMock
-    val pathParamMock: RequestParameter = mockk()
-    every { requestParamMock.pathParameter(any()) } returns pathParamMock
-    every { pathParamMock.toString() } returns ECurrencyPair.BTCZAR.toString()
-
-    // ACT
-    _exposed.handleGetOrderBookExposed(ctxMock)
-
-    verify { _orderBookControllerMock.getOrderBook(ECurrencyPair.BTCZAR) }
-    verify { ctxMock.end(Json.encodeToString(orderBookResult)) }
   }
 
   //endregion

@@ -1,20 +1,22 @@
 package controllers
 
 import com.google.inject.Inject
+import io.vertx.ext.web.validation.RequestParameters
+import modules.helpers.getPathParameter
+import modules.helpers.getRequestBody
 import modules.providers.ILimitOrderBookProvider
 import modules.providers.IOrderBookProvider
 import modules.providers.ITradeBookProvider
 import types.constants.ECurrencyPair
-import types.models.query.LimitOrderRequest
-import types.models.query.Paginator
+import types.models.query.TradeHistoryQuery
 import types.models.response.LimitOrderResult
 import types.models.response.OrderBookResult
 import types.models.response.TradeResult
 
 interface ITransactionBooksController {
-  fun getOrderBook(currencyPair: ECurrencyPair): OrderBookResult
-  fun postLimitOrder(query: LimitOrderRequest): LimitOrderResult
-  fun getTradeHistory(skip: Int, limit: Int, currencyPair: ECurrencyPair): List<TradeResult>
+  val getOrderBook: (params: RequestParameters) -> OrderBookResult
+  val postLimitOrder: (params: RequestParameters) -> LimitOrderResult
+  val getTradeHistory: (params: RequestParameters) -> List<TradeResult>
 }
 
 class TransactionBooksController @Inject constructor(
@@ -22,12 +24,23 @@ class TransactionBooksController @Inject constructor(
   private val _limitOrderBookProvider: ILimitOrderBookProvider,
   private val _tradeBookProvider: ITradeBookProvider,
 ) : ITransactionBooksController {
-  override fun getOrderBook(currencyPair: ECurrencyPair): OrderBookResult =
-    _orderBookProvider.getOrderHistory(currencyPair)
+  private fun resolveGetTradeHistoryParameters(params: RequestParameters): TradeHistoryQuery {
+    val currencyPair: ECurrencyPair = getPathParameter(params, "currencyPair")
+    val skip = params.queryParameter("skip").integer
+    val limit = params.queryParameter("limit").integer
 
-  override fun postLimitOrder(query: LimitOrderRequest): LimitOrderResult =
-    _limitOrderBookProvider.createLimitOrder(query)
+    return TradeHistoryQuery(skip, limit, currencyPair)
+  }
 
-  override fun getTradeHistory(skip: Int, limit: Int, currencyPair: ECurrencyPair): List<TradeResult> =
-    _tradeBookProvider.getTradeHistory(Paginator(skip, limit), currencyPair)
+  override val getOrderBook: (params: RequestParameters) -> OrderBookResult = {
+    _orderBookProvider.getOrderHistory(getPathParameter(it, "currencyPair"))
+  }
+
+  override val postLimitOrder: (params: RequestParameters) -> LimitOrderResult = {
+    _limitOrderBookProvider.createLimitOrder(getRequestBody(it))
+  }
+
+  override val getTradeHistory: (params: RequestParameters) -> List<TradeResult> = {
+    _tradeBookProvider.getTradeHistory(resolveGetTradeHistoryParameters(it))
+  }
 }

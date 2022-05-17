@@ -9,23 +9,21 @@ import io.vertx.ext.web.openapi.RouterBuilder
 import io.vertx.ext.web.validation.*
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import modules.helpers.getPathParameter
-import modules.helpers.getRequestBody
 import types.constants.Configuration
-import types.constants.ECurrencyPair
 import types.exceptions.UserOutputParseException
-import types.models.query.LimitOrderRequest
 
 interface IRouterService {
   fun setupOperations(routerBuilder: RouterBuilder)
-
   fun createRouterBuilder(vertx: Vertx): Future<RouterBuilder>
 }
 
-open class RouterService @Inject constructor(private val transactionBookController: ITransactionBooksController) :
+open class RouterService @Inject constructor(private val _transactionBookController: ITransactionBooksController) :
   IRouterService {
-  private fun getCurrencyPair(params: RequestParameters) =
-    getPathParameter<ECurrencyPair>(params, "currencyPair")
+  private inline fun <reified T> handleRequest(ctx: RoutingContext, controllerFn: (params: RequestParameters) -> T) {
+    val params: RequestParameters = ctx.get(ValidationHandler.REQUEST_CONTEXT_KEY)
+    val result = controllerFn(params)
+    ctx.end(Json.encodeToString(result))
+  }
 
   private fun RouterBuilder.handleOperation(operation: String, handlerFn: (ctx: RoutingContext) -> Unit) {
     this
@@ -51,33 +49,16 @@ open class RouterService @Inject constructor(private val transactionBookControll
     ctx.end("Validation error. ${getValidationError(ctx.failure())}".trimEnd())
   }
 
-  private val handleGetTradeHistory: (ctx: RoutingContext) -> Unit = {
-    val params: RequestParameters = it.get(ValidationHandler.REQUEST_CONTEXT_KEY)
-    val currencyPair = getCurrencyPair(params)
-    val skip = params.queryParameter("skip").integer
-    val limit = params.queryParameter("limit").integer
-    val result = transactionBookController.getTradeHistory(skip, limit, currencyPair)
-    it.end(Json.encodeToString(result))
-  }
-
-  private val handlePostLimitOrder: (ctx: RoutingContext) -> Unit = {
-    val params: RequestParameters = it.get(ValidationHandler.REQUEST_CONTEXT_KEY)
-    val request: LimitOrderRequest = getRequestBody(params)
-    val result = transactionBookController.postLimitOrder(request)
-    it.end(Json.encodeToString(result))
-  }
-
-  protected val handleGetOrderBook: (ctx: RoutingContext) -> Unit = {
-    val params: RequestParameters = it.get(ValidationHandler.REQUEST_CONTEXT_KEY)
-    val currencyPair = getCurrencyPair(params)
-    val result = transactionBookController.getOrderBook(currencyPair)
-    it.end(Json.encodeToString(result))
-  }
-
   override fun setupOperations(routerBuilder: RouterBuilder) {
-    routerBuilder.handleOperation("getOrderBook", handleGetOrderBook)
-    routerBuilder.handleOperation("getTradeHistory", handleGetTradeHistory)
-    routerBuilder.handleOperation("postLimitOrder", handlePostLimitOrder)
+    routerBuilder.handleOperation(
+      "getOrderBook",
+    ) { handleRequest(it, _transactionBookController.getOrderBook) }
+    routerBuilder.handleOperation(
+      "getTradeHistory",
+    ) { handleRequest(it, _transactionBookController.getTradeHistory) }
+    routerBuilder.handleOperation(
+      "postLimitOrder",
+    ) { handleRequest(it, _transactionBookController.postLimitOrder) }
   }
 
   override fun createRouterBuilder(vertx: Vertx): Future<RouterBuilder> =

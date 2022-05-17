@@ -3,6 +3,8 @@ import controllers.TransactionBooksController
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import io.vertx.ext.web.validation.RequestParameters
+import io.vertx.ext.web.validation.impl.RequestParameterImpl
 import modules.providers.ILimitOrderBookProvider
 import modules.providers.IOrderBookProvider
 import modules.providers.ITradeBookProvider
@@ -22,13 +24,17 @@ class TestTransactionBookController {
   )
 
   @Test
-  fun getOrderHistory_CallsExpectedProviderMethod() {
+  fun getOrderHistory_CallsExpectedProviderMethod_GetsValueFromParams() {
+    val paramsMock = mockk<RequestParameters>()
+    every { paramsMock.pathParameter(any()) } returns RequestParameterImpl(ECurrencyPair.ETHZAR.toString())
+
     val expectedResult: OrderBookResult = mockk()
     every { _orderBookProviderMock.getOrderHistory(any()) } returns expectedResult
 
-    val result = _transactionBookController.getOrderBook(ECurrencyPair.BTCZAR)
+    // ACT
+    val result = _transactionBookController.getOrderBook(paramsMock)
 
-    verify { _transactionBookController.getOrderBook(ECurrencyPair.BTCZAR) }
+    verify { _orderBookProviderMock.getOrderHistory(ECurrencyPair.ETHZAR) }
     assert(result == expectedResult)
   }
 }
