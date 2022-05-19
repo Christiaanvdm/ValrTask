@@ -5,9 +5,12 @@ Included is a basic Vertx API example intended as a Tech Assessment for a job ap
 Version 1 was done over a weekend and included what I could learn of a new stack in this time.
 
 Next steps in project:
- - Add Async GET <br />
- - Add Async POST (Update data insertion to use messaging queue/streams (RxJava)) <br />
- - Add Authentication <br />
+
+ - Add Async GET
+ 
+ - Add Async POST (Update data insertion to use messaging queue/streams (RxJava))
+ 
+ - Add Authentication
  
 == Building
 
