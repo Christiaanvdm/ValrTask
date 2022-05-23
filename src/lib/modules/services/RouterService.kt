@@ -7,6 +7,7 @@ import io.vertx.core.Vertx
 import io.vertx.ext.web.RoutingContext
 import io.vertx.ext.web.openapi.RouterBuilder
 import io.vertx.ext.web.validation.*
+import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import types.constants.Configuration
@@ -19,21 +20,6 @@ interface IRouterService {
 
 open class RouterService @Inject constructor(private val _transactionBookController: ITransactionBooksController) :
   IRouterService {
-  private inline fun <reified T> handleRequest(ctx: RoutingContext, controllerFn: (params: RequestParameters) -> T) {
-    val params: RequestParameters = ctx.get(ValidationHandler.REQUEST_CONTEXT_KEY)
-    val result = controllerFn(params)
-    ctx.end(Json.encodeToString(result))
-  }
-
-  private fun RouterBuilder.handleOperation(operation: String, handlerFn: (ctx: RoutingContext) -> Unit) {
-    this
-      .operation(operation)
-      .handler(handlerFn)
-      .failureHandler { ctx ->
-        handleValidationErrors(ctx)
-      }
-  }
-
   protected fun getValidationError(failure: Throwable): String {
     println("Validation error: ${failure.message}")
     return when (failure) {
@@ -49,16 +35,26 @@ open class RouterService @Inject constructor(private val _transactionBookControl
     ctx.end("Validation error. ${getValidationError(ctx.failure())}".trimEnd())
   }
 
+  private inline fun <reified T> RouterBuilder.handleControllerRequestAsync(
+    operation: String,
+    noinline controllerFn: suspend (RequestParameters) -> T,
+  ) {
+    this
+      .operation(operation)
+      .handler {
+        runBlocking {
+          val params: RequestParameters = it.get(ValidationHandler.REQUEST_CONTEXT_KEY)
+          it.end(Json.encodeToString(controllerFn(params)))
+        }
+      }.failureHandler {
+        handleValidationErrors(it)
+      }
+  }
+
   override fun setupOperations(routerBuilder: RouterBuilder) {
-    routerBuilder.handleOperation(
-      "getOrderBook",
-    ) { handleRequest(it, _transactionBookController.getOrderBook) }
-    routerBuilder.handleOperation(
-      "getTradeHistory",
-    ) { handleRequest(it, _transactionBookController.getTradeHistory) }
-    routerBuilder.handleOperation(
-      "postLimitOrder",
-    ) { handleRequest(it, _transactionBookController.postLimitOrder) }
+    routerBuilder.handleControllerRequestAsync("getOrderBook", _transactionBookController.getOrderBook)
+    routerBuilder.handleControllerRequestAsync("getTradeHistory", _transactionBookController.getTradeHistory)
+    routerBuilder.handleControllerRequestAsync("postLimitOrder", _transactionBookController.postLimitOrder)
   }
 
   override fun createRouterBuilder(vertx: Vertx): Future<RouterBuilder> =

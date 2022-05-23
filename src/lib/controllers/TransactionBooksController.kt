@@ -2,6 +2,7 @@ package controllers
 
 import com.google.inject.Inject
 import io.vertx.ext.web.validation.RequestParameters
+import kotlinx.coroutines.delay
 import modules.helpers.getPathParameter
 import modules.helpers.getRequestBody
 import modules.providers.ILimitOrderBookProvider
@@ -14,9 +15,9 @@ import types.models.response.OrderBookResult
 import types.models.response.TradeResult
 
 interface ITransactionBooksController {
-  val getOrderBook: (params: RequestParameters) -> OrderBookResult
-  val postLimitOrder: (params: RequestParameters) -> LimitOrderResult
-  val getTradeHistory: (params: RequestParameters) -> List<TradeResult>
+  val getOrderBook: suspend (params: RequestParameters) -> OrderBookResult
+  val postLimitOrder: suspend (params: RequestParameters) -> LimitOrderResult
+  val getTradeHistory: suspend (params: RequestParameters) -> List<TradeResult>
 }
 
 class TransactionBooksController @Inject constructor(
@@ -32,15 +33,16 @@ class TransactionBooksController @Inject constructor(
     return TradeHistoryQuery(skip, limit, currencyPair)
   }
 
-  override val getOrderBook: (params: RequestParameters) -> OrderBookResult = {
+  override val getOrderBook: suspend (params: RequestParameters) -> OrderBookResult =  {
+    delay(4000)
     _orderBookProvider.getOrderHistory(getPathParameter(it, "currencyPair"))
   }
 
-  override val postLimitOrder: (params: RequestParameters) -> LimitOrderResult = {
+  override val postLimitOrder: suspend (params: RequestParameters) -> LimitOrderResult = {
     _limitOrderBookProvider.createLimitOrder(getRequestBody(it))
   }
 
-  override val getTradeHistory: (params: RequestParameters) -> List<TradeResult> = {
+  override val getTradeHistory: suspend (params: RequestParameters) -> List<TradeResult> = {
     _tradeBookProvider.getTradeHistory(resolveGetTradeHistoryParameters(it))
   }
 }
